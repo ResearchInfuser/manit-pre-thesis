@@ -1,0 +1,131 @@
+# Results and Discussion {#sec-results}
+
+This chapter demonstrates various table types and result presentation formats.
+
+
+
+## Basic Tables {#sec-basic-tables}
+
+### Simple Table
+
+| Metric    | Value |
+|-----------|-------|
+| Accuracy  | 89.3% |
+| Precision | 87.5% |
+| Recall    | 91.2% |
+| F1-Score  | 88.3% |
+
+: Experimental results {#tbl-results}
+
+Reference: @tbl-results shows the performance metrics.
+
+
+
+## Table Alignment {#sec-table-align}
+
+Control column alignment:
+
+```markdown
+| Left | Center | Right |
+|:-----|:------:|------:|
+| A    | B      | C     |
+```
+
+| Algorithm | Time (ms) | Accuracy |
+|:----------|:---------:|---------:|
+| Method A  | 120       | 85.3%    |
+| Method B  | 150       | 89.7%    |
+| Method C  | 180       | 92.1%    |
+
+: Performance comparison with alignment {#tbl-aligned}
+
+
+
+## Multi-line Tables {#sec-multiline}
+
+For complex content:
+
+| Method | Description | Pros | Cons |
+|--------|-------------|------|------|
+| Deep Learning | Uses neural networks with multiple layers | High accuracy, learns features automatically | Requires large dataset, computationally expensive |
+| Random Forest | Ensemble of decision trees | Handles non-linear data, robust | Can overfit, slow for large datasets |
+| SVM | Finds optimal hyperplane | Effective in high dimensions | Sensitive to parameters |
+
+: Detailed comparison of methods {#tbl-multiline}
+
+
+
+## Wide Tables {#sec-wide-tables}
+
+For tables with many columns:
+
+| Dataset | Train Size | Test Size | Features | Classes | Baseline | Method 1 | Method 2 | Method 3 | Best |
+|---------|-----------|-----------|----------|---------|----------|----------|----------|----------|------|
+| MNIST | 60000 | 10000 | 784 | 10 | 92.3% | 95.1% | 96.8% | 97.2% | 97.2% |
+| CIFAR-10 | 50000 | 10000 | 3072 | 10 | 75.4% | 82.3% | 86.1% | 89.5% | 89.5% |
+| ImageNet | 1281167 | 50000 | 150528 | 1000 | 68.2% | 74.5% | 78.9% | 82.1% | 82.1% |
+
+: Comprehensive experimental results {#tbl-wide}
+
+
+
+## Grouped Tables {#sec-grouped}
+
+Organize related results:
+
+**Table: Results by Category**
+
+| Category | Precision | Recall | F1 |
+|----------|-----------|--------|----|
+| **Image Classification** |
+| Model A | 85.3% | 83.1% | 84.2% |
+| Model B | 89.7% | 87.5% | 88.6% |
+| **Object Detection** |
+| Model C | 78.4% | 76.2% | 77.3% |
+| Model D | 82.1% | 80.5% | 81.3% |
+
+: Results grouped by task {#tbl-grouped}
+
+
+
+## Statistical Significance {#sec-statistics}
+
+| Comparison | t-statistic | p-value | Significant |
+|------------|-------------|---------|-------------|
+| A vs B | 3.45 | 0.001 | Yes*** |
+| B vs C | 2.18 | 0.032 | Yes* |
+| A vs C | 1.67 | 0.098 | No |
+
+: Statistical significance tests (* p<0.05, *** p<0.001) {#tbl-stats}
+
+
+
+## Ablation Study {#sec-ablation}
+
+| Component Removed | Accuracy | Drop |
+|-------------------|----------|------|
+| Full Model | 92.3% | - |
+| - Feature A | 89.1% | -3.2% |
+| - Feature B | 90.5% | -1.8% |
+| - Feature C | 87.2% | -5.1% |
+| - All Features | 78.4% | -13.9% |
+
+: Ablation study results {#tbl-ablation}
+
+
+
+## Discussion {#sec-discussion}
+
+Analyze and interpret the results:
+
+**Key Findings:**
+
+1. The proposed method achieves 92.3% accuracy (@tbl-results), outperforming the baseline by 10%.
+
+2. Statistical tests (@tbl-stats) confirm the improvements are significant (p < 0.001).
+
+3. Ablation study (@tbl-ablation) shows Feature C is most critical (-5.1% when removed).
+
+**Comparison with State-of-the-Art:**
+
+As shown in @tbl-aligned, our Method C achieves the best performance while maintaining reasonable computational time.

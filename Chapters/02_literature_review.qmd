@@ -1,0 +1,177 @@
+# Literature Review {#sec-literature-review}
+
+This chapter demonstrates citation techniques and literature organization.
+
+
+
+## How to Add References {#sec-add-refs}
+
+### Step 1: Add to BibTeX File
+
+Open `references.bib` or `MyLibrary.bib` and add entries:
+
+```bibtex
+@article{author2023,
+  author = {Last, First and Second, Author},
+  title = {Article Title},
+  journal = {Journal Name},
+  year = {2023},
+  volume = {10},
+  number = {2},
+  pages = {123--145},
+  doi = {10.1234/journal.2023.001}
+}
+
+@inproceedings{author2022,
+  author = {Author, Name},
+  title = {Conference Paper Title},
+  booktitle = {Proceedings of Conference Name},
+  year = {2022},
+  pages = {45--58},
+  publisher = {Publisher}
+}
+
+@book{author2021,
+  author = {Author, Name},
+  title = {Book Title},
+  publisher = {Publisher Name},
+  year = {2021},
+  edition = {2nd}
+}
+```
+
+### Step 2: Get BibTeX Entries
+
+**From Google Scholar:**
+1. Search for paper
+2. Click "Cite"  
+3. Select "BibTeX"
+4. Copy and paste into your `.bib` file
+
+**From DOI:**
+- Visit https://doi2bib.org
+- Enter DOI
+- Get BibTeX format
+
+**From Reference Managers:**
+- Zotero, Mendeley, EndNote all export BibTeX
+
+
+
+## Citation Syntax {#sec-cite-syntax}
+
+### Basic Citations
+
+| Type | Syntax | Output |
+|------|--------|--------|
+| Narrative | `@smith2023machine` | Smith and Doe (2023) |
+| Parenthetical | `[@smith2023machine]` | (Smith and Doe, 2023) |
+| Multiple | `[@smith2023machine; @jones2022deep]` | (Smith and Doe, 2023; Jones and Brown, 2022) |
+| With page | `[@smith2023machine, p. 42]` | (Smith and Doe, 2023, p. 42) |
+| Suppress author | `[-@smith2023machine]` | (2023) |
+
+: Citation syntax and output {#tbl-cite-syntax}
+
+### Examples in Context
+
+**Narrative citation:**
+
+Recent work by @smith2023machine shows that machine learning approaches improve accuracy by 15%.
+
+**Parenthetical citation:**
+
+Machine learning has shown significant improvements in recent years [@jones2022deep].
+
+**Multiple citations:**
+
+Several studies have investigated this phenomenon [@smith2023machine; @jones2022deep; @wilson2023framework].
+
+**With page numbers:**
+
+As noted by @kumar2022analysis [p. 95], statistical methods are crucial.
+
+
+
+## Literature Organization {#sec-lit-organization}
+
+### Organizing by Topic
+
+Organize your literature review by themes, not chronologically:
+
+#### Machine Learning Approaches
+
+Early work in machine learning @russell2020artificial established foundational algorithms. Recent advances by @smith2023machine and @jones2022deep have improved performance significantly. The framework proposed by @wilson2023framework provides a unified approach.
+
+#### Statistical Methods
+
+Traditional statistical approaches @kumar2022analysis remain relevant. However, modern techniques @martin2023algorithms offer better scalability for large datasets.
+
+#### Distributed Computing
+
+The rise of big data necessitates distributed frameworks @wang2022distributed. These systems enable processing of massive datasets efficiently.
+
+### Identifying Research Gaps
+
+After reviewing the literature, identify gaps:
+
+1. **Gap 1:** While @smith2023machine achieved 85% accuracy, their method requires extensive training data.
+
+2. **Gap 2:** Existing approaches [@jones2022deep; @wilson2023framework] have not addressed real-time constraints.
+
+3. **Gap 3:** As noted by @kumar2022analysis, scalability remains an open challenge.
+
+
+
+## Comparison Tables {#sec-lit-comparison}
+
+Summarize related work in tables:
+
+| Study | Method | Dataset | Accuracy | Year |
+|-------|--------|---------|----------|------|
+| @smith2023machine | Deep Learning | ImageNet | 91.2% | 2023 |
+| @jones2022deep | Neural Network | CIFAR-10 | 89.5% | 2022 |
+| @patel2023neural | CNN | Custom | 87.8% | 2023 |
+| @martin2023algorithms | Random Forest | UCI | 83.2% | 2023 |
+
+: Comparison of related work {#tbl-lit-comparison}
+
+Reference the table: See @tbl-lit-comparison for a detailed comparison.
+
+
+
+## Critical Analysis {#sec-critical-analysis}
+
+Don't just summarize - analyze critically:
+
+**Strengths:**
+- The method by @smith2023machine achieves high accuracy
+- Approach of @wilson2023framework is computationally efficient
+- @jones2022deep provides strong theoretical foundations
+
+**Limitations:**
+- Most studies [@smith2023machine; @jones2022deep] use limited datasets
+- Real-time performance not addressed by @wilson2023framework  
+- Scalability concerns raised by @kumar2022analysis remain unresolved
+
+**Research Opportunities:**
+Based on gaps identified above, this work proposes to...
+
+
+
+## Connection to Your Work {#sec-connection}
+
+End with how your work fits in:
+
+While existing approaches [@smith2023machine; @jones2022deep; @wilson2023framework] have made significant progress, they share common limitations. This research addresses these gaps by proposing a novel framework that combines the strengths of @smith2023machine and @wilson2023framework while overcoming the scalability issues identified by @kumar2022analysis.
+
+The methodology described in @sec-methodology builds upon these foundations to develop an improved approach.
+
+
+
+**Remember:**
+- Cite sources for all claims
+- Group by themes, not chronologically
+- Critically analyze, don't just summarize  
+- Identify specific gaps your work addresses
+- Use tables and diagrams to clarify comparisons
+- Connect literature review to your methodology

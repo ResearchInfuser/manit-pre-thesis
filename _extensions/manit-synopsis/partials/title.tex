@@ -1,0 +1,72 @@
+% -------------------------------------------------------
+% Thesis Title & Author Information
+% -------------------------------------------------------
+\thesistitle{$title$} % Thesis title, used in the title and abstract, print it elsewhere with \ttitle
+\author{$author$} % Author's name, used in the title page and abstract, print it elsewhere with \authorName
+\scholarid{$thesis.scholar-number$} % Scholar ID
+\phdstart{$thesis.phd-start-date$} % PhD start date
+\phdend{$thesis.phd-end-date$} % PhD end date
+\institute{$thesis.institute$}
+
+% -------------------------------------------------------
+% Degree and Examiner Information
+% -------------------------------------------------------
+\degree{$thesis.degree-name$} % Degree name (e.g., Doctor of Philosophy)
+\examiner{} % Examiner's name, currently not used in the template, print it elsewhere with \examinerName
+
+% -------------------------------------------------------
+% University Information
+% -------------------------------------------------------
+$if(thesis.university)$
+\university{$thesis.university$} % University name
+$else$\university{}
+$endif$
+
+\universitylineone{$thesis.university-line1$} % University name first line
+\universitylinetwo{$thesis.university-line2$} % University name second line
+\universitylocation{$thesis.university-location$} % University location
+
+% -------------------------------------------------------
+% Department & Faculty Information
+% -------------------------------------------------------
+$if(thesis.department)$
+\department{$thesis.department$} % Thesis department name
+$else$\department{}
+$endif$
+
+$if(thesis.faculty)$
+\faculty{$thesis.faculty$} % Faculty name (if applicable)
+$else$
+\faculty{}
+$endif$
+
+$if(thesis.group)$
+\group{$thesis.group$} % Research group name (if applicable)
+$else$\group{}
+$endif$
+
+% -------------------------------------------------------
+% Research Subject and Keywords
+% -------------------------------------------------------
+\subject{} % Research subject (not currently used)
+% \keywords{$thesis.keywords$} % Thesis keywords
+% -------------------------------------------------------
+% Supervisor Information (Primary Supervisor)
+% -------------------------------------------------------
+\supervisor{$thesis.supervisor.name$} % Supervisor's full name
+\supdesignation{$thesis.supervisor.designation$} % Supervisor's designation (e.g., Associate Professor)
+\supdepartment{$thesis.supervisor.department$} % Supervisor's department
+\supinstitute{$thesis.supervisor.institute$} % Supervisor's institute/university
+
+% -------------------------------------------------------
+% Co-Supervisor Information (Secondary Supervisor)
+% -------------------------------------------------------
+\cosupervisor{$thesis.co-supervisor.name$} % Co-Supervisor's full name
+\cosupdesignation{$thesis.co-supervisor.designation$} % Co-Supervisor's designation
+\cosupdepartment{$thesis.co-supervisor.department$} % Co-Supervisor's department
+\cosupinstitute{$thesis.co-supervisor.institute$} % Co-Supervisor's institute/university
+
+% -------------------------------------------------------
+% Table of Contents Depth
+% -------------------------------------------------------
+\setcounter{tocdepth}{$if(toc-depth)$$toc-depth$$else$3$endif$} % Controls depth of sections in ToC

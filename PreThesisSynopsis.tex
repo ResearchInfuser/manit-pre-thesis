@@ -1,0 +1,2061 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  a4paper,
+  12pt,
+  english,
+  toctotoc]{ManitSynopsis}
+\usepackage{xcolor}
+\usepackage[a4paper,inner=25mm,outer=25mm,bindingoffset=5mm,top=15mm,bottom=15mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{references.bib}
+
+
+% \usepackage[utf8]{inputenc} % Required for inputting international characters
+%\usepackage[T1]{fontenc} % Output font encoding for international characters; causes problems for xelatex
+
+%\usepackage{mathpazo} % Use the Palatino font by default
+
+% \usepackage[backend=bibtex, style=authoryear, natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+% \usepackage{biblatex}
+
+\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+\usepackage{scrlayer-scrpage}
+% \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{algpseudocode}
+
+\usepackage[none]{hyphenat} % Prevent LaTeX from hyphenating words
+\sloppy                      % Loosen spacing to avoid overfull lines
+\setlength{\emergencystretch}{3em} % Extra flexibility for justification
+
+%----------------------------------------------------------------------------------------
+%	MARGINS
+%----------------------------------------------------------------------------------------
+
+\geometry{
+	headheight=2ex,
+	includehead,
+	includefoot
+}
+
+\raggedbottom
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
+\hypersetup{pdfauthor=\authorName} % Set the PDF's author to your name
+\hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
+}
+
+
+% ---- Chapter title settings
+\booltrue{chapteroneline}
+\renewcommand{\mdtChapapp}{}
+\renewcommand{\autodot}{}
+\renewcommand{\abovechapterskip}{\vspace*{0pt}}
+
+% Remove "Contents" from header after Table of Contents
+\patchcmd{\tableofcontents}{\@starttoc{toc}}{%
+  \markboth{}{}%
+  \@starttoc{toc}%
+}{}{}
+
+% Reduce font size and spacing in bibliography
+\AtBeginDocument{%
+  \AtBeginBibliography{%
+    \footnotesize
+    \setlength{\bibitemsep}{0pt}
+    \setlength{\parskip}{0pt}
+  }%
+}
+
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{algorithm}{}{\usepackage{algorithm}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{algpseudocode}{}{\usepackage{algpseudocode}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Your Thesis Title Here},
+  pdfauthor={Your Name},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={blue},
+  urlcolor={red},
+  pdfcreator={LaTeX via pandoc}}
+
+
+% -------------------------------------------------------
+% Thesis Title & Author Information
+% -------------------------------------------------------
+\thesistitle{Your Thesis Title
+Here} % Thesis title, used in the title and abstract, print it elsewhere with \ttitle
+\author{Your
+Name} % Author's name, used in the title page and abstract, print it elsewhere with \authorName
+\scholarid{YOUR\_SCHOLAR\_NUMBER} % Scholar ID
+\phdstart{Month Year} % PhD start date
+\phdend{Month Year} % PhD end date
+\institute{Maulana Azad National Institute of Technology, Bhopal}
+
+% -------------------------------------------------------
+% Degree and Examiner Information
+% -------------------------------------------------------
+\degree{Doctor of Philosophy} % Degree name (e.g., Doctor of Philosophy)
+\examiner{} % Examiner's name, currently not used in the template, print it elsewhere with \examinerName
+
+% -------------------------------------------------------
+% University Information
+% -------------------------------------------------------
+\university{}
+
+\universitylineone{Maulana Azad} % University name first line
+\universitylinetwo{National Institute of
+Technology,} % University name second line
+\universitylocation{Bhopal - 462003 (INDIA)} % University location
+
+% -------------------------------------------------------
+% Department & Faculty Information
+% -------------------------------------------------------
+\department{Your Department Name} % Thesis department name
+
+\faculty{}
+
+\group{}
+
+% -------------------------------------------------------
+% Research Subject and Keywords
+% -------------------------------------------------------
+\subject{} % Research subject (not currently used)
+% \keywords{Your Keywords Here} % Thesis keywords
+% -------------------------------------------------------
+% Supervisor Information (Primary Supervisor)
+% -------------------------------------------------------
+\supervisor{Dr.~Supervisor Name} % Supervisor's full name
+\supdesignation{Designation} % Supervisor's designation (e.g., Associate Professor)
+\supdepartment{Your Department Name} % Supervisor's department
+\supinstitute{Maulana Azad National Institute of Technology,
+Bhopal} % Supervisor's institute/university
+
+% -------------------------------------------------------
+% Co-Supervisor Information (Secondary Supervisor)
+% -------------------------------------------------------
+\cosupervisor{Dr.~Co-Supervisor Name} % Co-Supervisor's full name
+\cosupdesignation{Designation} % Co-Supervisor's designation
+\cosupdepartment{Department Name} % Co-Supervisor's department
+\cosupinstitute{Institute Name} % Co-Supervisor's institute/university
+
+% -------------------------------------------------------
+% Table of Contents Depth
+% -------------------------------------------------------
+\setcounter{tocdepth}{1} % Controls depth of sections in ToC
+\begin{document}
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+\thispagestyle{empty} % No header/footer
+\begin{center}
+% Add flexible spacing above
+\vfill
+
+% Thesis Title in uppercase
+{\fontsize{16pt}{20pt}\selectfont \bfseries \MakeUppercase{\ttitle}\par}\vspace{6mm}
+
+\textbf{PRE-THESIS SYNOPSIS}\\% Thesis type
+
+\vspace{3mm} 
+
+\textbf{\textit{submitted in partial fulfillment of the\\ requirements for the award of the degree}}
+
+\vspace{1mm} 
+
+\textit{of} \vspace{1mm} % "of" with balanced spacing
+
+\MakeUppercase{\textbf{\degreeName}} \vspace{1mm} % Degree name in uppercase
+
+\textit{in} \vspace{1mm} % "in" and Department name
+
+\MakeUppercase{\textbf{\Department}} \vspace{1mm}
+
+\textit{by} \vspace{1mm} % "by" and Author details
+
+\MakeUppercase{\textbf{\authorName}} \\[1mm] % Author without link
+
+\textbf{(Sch. No.: \scholarID)}
+
+\textbf{Under the Supervision}
+
+\textit{of} \vspace{2mm}
+
+\textbf{\supervisorName} \& \textbf{\cosupervisorName}
+
+
+\vfill
+
+% Logo
+\includegraphics[height=1.75in]{images/logo.png}
+
+\vfill
+
+{\fontsize{14pt}{16pt}\selectfont\scshape % University details in uppercase
+\MakeUppercase{\textbf{\universityLineOne}} \\ 
+\MakeUppercase{\textbf{\universityLineTwo}} \\ 
+\MakeUppercase{\textbf{\universityLocation}}\par} 
+\vspace{2mm}
+
+{\fontsize{14pt}{16pt}\selectfont \MakeUppercase{\textbf{Month,
+Year}}} % Date
+
+\vspace{3mm}
+{\small\textbf{Proud to be part of An Institute of National Importance}}
+\end{center}
+\end{titlepage}
+
+% \cleardoublepage % Ensures next section starts on the right side
+% 
+% %----------------------------------------------------------------------------------------
+% %	COPYRIGHT PAGE
+% %----------------------------------------------------------------------------------------
+% \newpairofpagestyles{copyrightpage}{% Define a new page style
+%     \clearpairofpagestyles % Clear default header/footer
+%     \cfoot{\textbf{Proud to be part of An Institute of National Importance}} % Centered in footer
+%     \ofoot{\pagemark} % Page number at the bottom-right
+% }
+% 
+% \begin{center}
+%     \vspace*{0.3\textheight}
+%     \textcopyright\ {\MakeUppercase{\textbf{\universityLineOne}} \MakeUppercase{\textbf{\universityLineTwo}} \\ 
+%     \MakeUppercase{\textbf{\universityLocation}}\par} 
+%     \textbf{ALL RIGHTS RESERVED}
+%     \vfill % Pushes the next text to the bottom
+%     \textbf{Proud to be part of An Institute of National Importance}
+% \end{center}
+
+\cleardoublepage
+% 
+% %----------------------------------------------------------------------------------------
+% %	DECLARATION PAGE
+% %----------------------------------------------------------------------------------------
+% 
+% \addchaptertocentry{\authorshipname} 
+% 
+% 
+
+
+% 
+%----------------------------------------------------------------------------------------
+%	CONTENTS, FIGURES, AND TABLES
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\hypersetup{linkcolor=black}
+
+\tableofcontents
+% \listoffigures
+% \listoftables
+
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	ABBREVIATIONS, SYMBOLS, AND DEDICATION SECTIONS
+%----------------------------------------------------------------------------------------
+
+% % 
+% % 
+% % 
+% 
+\cleardoublepage % Ensures Chapter 1 starts on the right page in two-sided layout
+
+%----------------------------------------------------------------------------------------
+%	MAIN THESIS CONTENT
+%----------------------------------------------------------------------------------------
+
+\mainmatter
+\pagestyle{plain}  
+% Define some commands to keep the formatting separated from the content 
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\tabhead}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+
+\floatname{algorithm}{Algorithm}
+
+\numberwithin{algorithm}{chapter}
+
+
+\bookmarksetup{startatroot}
+
+\chapter{Introduction}\label{sec-introduction}
+
+This template demonstrates how to write a thesis synopsis using Quarto.
+Each section below shows the syntax and rendered output.
+
+\section{Sections and Subsections}\label{sec-sections}
+
+Use \texttt{\#} symbols for headings. Each \texttt{\#} represents a
+level:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# Chapter Title (appears in Table of Contents)}
+\FunctionTok{\#\# Section}
+\FunctionTok{\#\#\# Subsection  }
+\FunctionTok{\#\#\#\# Subsubsection}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Add custom IDs for cross-referencing:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\#\# My Section \{\#sec{-}custom{-}id\}}
+\end{Highlighting}
+\end{Shaded}
+
+Then reference it: \texttt{@sec-custom-id} produces
+Section~\ref{sec-sections}
+
+\section{Text Formatting}\label{sec-text-format}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Text formatting options}\label{tbl-text-format}\tabularnewline
+\toprule\noalign{}
+Syntax & Output \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Syntax & Output \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{**bold\ text**} & \textbf{bold text} \\
+\texttt{*italic\ text*} & \emph{italic text} \\
+\texttt{\textasciigrave{}code\textasciigrave{}} & \texttt{code} \\
+\texttt{\textasciitilde{}\textasciitilde{}strikethrough\textasciitilde{}\textasciitilde{}}
+& \st{strikethrough} \\
+\texttt{H\textasciitilde{}2\textasciitilde{}O} (subscript) &
+H\textsubscript{2}O \\
+\texttt{X\^{}2\^{}} (superscript) & X\textsuperscript{2} \\
+\end{longtable}
+
+\section{Lists}\label{sec-lists}
+
+\textbf{Numbered list:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialStringTok{1. }\NormalTok{First item}
+\SpecialStringTok{2. }\NormalTok{Second item  }
+\SpecialStringTok{3. }\NormalTok{Third item}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  First item
+\item
+  Second item
+\item
+  Third item
+\end{enumerate}
+
+\textbf{Bullet list:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialStringTok{{-} }\NormalTok{Item one}
+\SpecialStringTok{{-} }\NormalTok{Item two}
+\SpecialStringTok{  {-} }\NormalTok{Nested item}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{itemize}
+\tightlist
+\item
+  Item one
+\item
+  Item two
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Nested item
+  \end{itemize}
+\end{itemize}
+
+\section{Figures}\label{sec-figures}
+
+\subsection{Images from Files}\label{images-from-files}
+
+Place images in \texttt{figures/} directory:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AlertTok{![Caption text](figures/image.png)}\NormalTok{\{\#fig{-}label width=80\%\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Attributes:} - \texttt{\#fig-label} - ID for cross-referencing\\
+- \texttt{width=80\%} - Width (percentage or absolute like \texttt{5in})
+- \texttt{fig-align="center"} - Alignment (left, center, right)
+
+\subsection{Diagrams with Mermaid}\label{diagrams-with-mermaid}
+
+Mermaid diagrams allow you to create flowcharts, sequence diagrams, and
+more using text-based syntax.
+
+\textbf{Basic syntax example:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{::: \{\#fig{-}label\}}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{mermaid\}}
+\NormalTok{flowchart TD}
+\NormalTok{    A[Start] {-}{-}\textgreater{} B\{Decision?\}}
+\NormalTok{    B {-}{-}\textgreater{}|Yes| C[Process A]}
+\NormalTok{    B {-}{-}\textgreater{}|No| D[Process B]}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+\NormalTok{Caption for the diagram.}
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{See Chapter~\ref{sec-methodology} for a working example.}
+
+\subsection{Multiple Subfigures}\label{multiple-subfigures}
+
+Create side-by-side figures:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{::: \{\#fig{-}comparison layout{-}ncol=2\}}
+
+\AlertTok{![Method A](figures/method{-}a.png)}\NormalTok{\{\#fig{-}method{-}a\}}
+
+\AlertTok{![Method B](figures/method{-}b.png)}\NormalTok{\{\#fig{-}method{-}b\}}
+
+\NormalTok{Comparison of two methods.}
+\NormalTok{:::}
+\end{Highlighting}
+\end{Shaded}
+
+Reference subfigures: \texttt{@fig-method-a} and \texttt{@fig-method-b}
+
+\section{Tables}\label{sec-tables}
+
+\subsection{Basic Table}\label{basic-table}
+
+\textbf{Syntax:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{|}\NormalTok{ Column 1 }\PreprocessorTok{|}\NormalTok{ Column 2 }\PreprocessorTok{|}\NormalTok{ Column 3 }\PreprocessorTok{|}
+\PreprocessorTok{|{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}|{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}|{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}|}
+\PreprocessorTok{|}\NormalTok{ Data A   }\PreprocessorTok{|}\NormalTok{ Data B   }\PreprocessorTok{|}\NormalTok{ Data C   }\PreprocessorTok{|}
+\PreprocessorTok{|}\NormalTok{ Data D   }\PreprocessorTok{|}\NormalTok{ Data E   }\PreprocessorTok{|}\NormalTok{ Data F   }\PreprocessorTok{|}
+
+\NormalTok{: Table caption \{\#tbl{-}label\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Output:}
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{Performance comparison of different
+methods}\label{tbl-performance}\tabularnewline
+\toprule\noalign{}
+Method & Accuracy & F1-Score \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Method & Accuracy & F1-Score \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Baseline & 0.82 & 0.79 \\
+Proposed & 0.91 & 0.88 \\
+State-of-art & 0.87 & 0.84 \\
+\end{longtable}
+
+\textbf{Reference:} \texttt{@tbl-performance} produces
+Table~\ref{tbl-performance}
+
+\subsection{Column Alignment}\label{column-alignment}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{|}\NormalTok{ Left }\PreprocessorTok{|}\NormalTok{ Center }\PreprocessorTok{|}\NormalTok{ Right }\PreprocessorTok{|}
+\PreprocessorTok{|:{-}{-}{-}{-}{-}|:{-}{-}{-}{-}{-}{-}:|{-}{-}{-}{-}{-}{-}:|}
+\PreprocessorTok{|}\NormalTok{ A    }\PreprocessorTok{|}\NormalTok{ B      }\PreprocessorTok{|}\NormalTok{ C     }\PreprocessorTok{|}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{longtable}[]{@{}lcr@{}}
+\caption{Algorithm complexity}\label{tbl-complexity}\tabularnewline
+\toprule\noalign{}
+Algorithm & Complexity & Memory \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Algorithm & Complexity & Memory \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Method A & O(n) & 10 MB \\
+Method B & O(n log n) & 25 MB \\
+\end{longtable}
+
+\section{Equations}\label{sec-equations}
+
+\subsection{Inline Equations}\label{inline-equations}
+
+\textbf{Syntax:} \texttt{\$E\ =\ mc\^{}2\$}\\
+\textbf{Output:} The famous equation \(E = mc^2\) shows energy-mass
+equivalence.
+
+\subsection{Display Equations}\label{display-equations}
+
+\textbf{Single equation:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{$$}
+\NormalTok{f(x) = \textbackslash{}int\_\{{-}\textbackslash{}infty\}\^{}\{\textbackslash{}infty\} e\^{}\{{-}x\^{}2\} dx}
+\NormalTok{$$ \{\#eq{-}gaussian\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Output:}
+
+\begin{equation}\phantomsection\label{eq-gaussian}{
+f(x) = \int_{-\infty}^{\infty} e^{-x^2} dx
+}\end{equation}
+
+\textbf{Reference:} \texttt{@eq-gaussian} produces
+Equation~\ref{eq-gaussian}
+
+\subsection{Multi-line Equations}\label{multi-line-equations}
+
+\textbf{Syntax:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{$$}
+\NormalTok{\textbackslash{}begin\{aligned\}}
+\NormalTok{\textbackslash{}nabla \textbackslash{}cdot \textbackslash{}mathbf\{E\} \&= \textbackslash{}frac\{\textbackslash{}rho\}\{\textbackslash{}epsilon\_0\} }\SpecialCharTok{\textbackslash{}\textbackslash{}}
+\NormalTok{\textbackslash{}nabla \textbackslash{}cdot \textbackslash{}mathbf\{B\} \&= 0 }\SpecialCharTok{\textbackslash{}\textbackslash{}}
+\NormalTok{\textbackslash{}nabla \textbackslash{}times \textbackslash{}mathbf\{E\} \&= {-}\textbackslash{}frac\{\textbackslash{}partial \textbackslash{}mathbf\{B\}\}\{\textbackslash{}partial t\} }\SpecialCharTok{\textbackslash{}\textbackslash{}}
+\NormalTok{\textbackslash{}nabla \textbackslash{}times \textbackslash{}mathbf\{B\} \&= \textbackslash{}mu\_0\textbackslash{}mathbf\{J\} + \textbackslash{}mu\_0\textbackslash{}epsilon\_0\textbackslash{}frac\{\textbackslash{}partial \textbackslash{}mathbf\{E\}\}\{\textbackslash{}partial t\}}
+\NormalTok{\textbackslash{}end\{aligned\}}
+\NormalTok{$$ \{\#eq{-}maxwell\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Output:}
+
+\begin{equation}\phantomsection\label{eq-maxwell}{
+\begin{aligned}
+\nabla \cdot \mathbf{E} &= \frac{\rho}{\epsilon_0} \\
+\nabla \cdot \mathbf{B} &= 0 \\
+\nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &= \mu_0\mathbf{J} + \mu_0\epsilon_0\frac{\partial \mathbf{E}}{\partial t}
+\end{aligned}
+}\end{equation}
+
+\subsection{Matrices}\label{matrices}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{$$}
+\NormalTok{\textbackslash{}mathbf\{A\} = \textbackslash{}begin\{bmatrix\}}
+\NormalTok{a\_\{11\} \& a\_\{12\} \& a\_\{13\} }\SpecialCharTok{\textbackslash{}\textbackslash{}}
+\NormalTok{a\_\{21\} \& a\_\{22\} \& a\_\{23\} }\SpecialCharTok{\textbackslash{}\textbackslash{}}
+\NormalTok{a\_\{31\} \& a\_\{32\} \& a\_\{33\}}
+\NormalTok{\textbackslash{}end\{bmatrix\}}
+\NormalTok{$$ \{\#eq{-}matrix\}}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{equation}\phantomsection\label{eq-matrix}{
+\mathbf{A} = \begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{bmatrix}
+}\end{equation}
+
+\section{Code Blocks}\label{sec-code}
+
+\subsection{Syntax Highlighted Code}\label{syntax-highlighted-code}
+
+\textbf{Python example:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+
+\CommentTok{\# Generate data}
+\NormalTok{x }\OperatorTok{=}\NormalTok{ np.linspace(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ np.sin(x)}
+
+\CommentTok{\# Plot}
+\NormalTok{plt.plot(x, y)}
+\NormalTok{plt.xlabel(}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.ylabel(}\StringTok{\textquotesingle{}sin(x)\textquotesingle{}}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Other languages:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}r}
+\CommentTok{\# R code}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(data)}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}javascript}
+\CommentTok{// JavaScript}
+\NormalTok{function }\FunctionTok{factorial}\OperatorTok{(}\NormalTok{n}\OperatorTok{)} \OperatorTok{\{}
+  \ControlFlowTok{return}\NormalTok{ n }\OperatorTok{\textless{}=} \DecValTok{1} \OperatorTok{?} \DecValTok{1} \OperatorTok{:}\NormalTok{ n }\OperatorTok{*} \FunctionTok{factorial}\OperatorTok{(}\NormalTok{n }\OperatorTok{{-}} \DecValTok{1}\OperatorTok{);}
+\OperatorTok{\}}
+\NormalTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Cross-References}\label{sec-cross-ref}
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{Cross-reference syntax}\label{tbl-crossref}\tabularnewline
+\toprule\noalign{}
+Type & Syntax & Example Output \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Type & Syntax & Example Output \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Section & \texttt{@sec-label} & Section~\ref{sec-figures} \\
+Figure & \texttt{@fig-label} & \textbf{?@fig-example} \\
+Table & \texttt{@tbl-label} & Table~\ref{tbl-performance} \\
+Equation & \texttt{@eq-label} & Equation~\ref{eq-gaussian} \\
+\end{longtable}
+
+\textbf{Multiple references:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{See @sec{-}figures and @sec{-}tables for examples.}
+\NormalTok{Figures @fig{-}example and @tbl{-}example show basic elements.}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Citations}\label{sec-citations}
+
+Add references to \texttt{references.bib} or \texttt{MyLibrary.bib}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\VariableTok{@article}\NormalTok{\{}\OtherTok{smith2023}\NormalTok{,}
+  \DataTypeTok{author}\NormalTok{ = \{Smith, John\},}
+  \DataTypeTok{title}\NormalTok{ = \{Example Paper\},}
+  \DataTypeTok{journal}\NormalTok{ = \{Journal Name\},}
+  \DataTypeTok{year}\NormalTok{ = \{2023\},}
+  \DataTypeTok{volume}\NormalTok{ = \{10\},}
+  \DataTypeTok{pages}\NormalTok{ = \{1{-}{-}10\}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Citation syntax:}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Citation examples}\label{tbl-citations}\tabularnewline
+\toprule\noalign{}
+Syntax & Output \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Syntax & Output \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{@einstein1905} & Einstein (1905) \\
+\texttt{{[}@einstein1905{]}} & (Einstein, 1905) \\
+\texttt{{[}@einstein1905;\ @knuth1984{]}} & (Einstein, 1905; Knuth,
+1984) \\
+\texttt{{[}@einstein1905,\ p.\ 23{]}} & (Einstein, 1905, p.~23) \\
+\end{longtable}
+
+\textbf{Example in text:}
+
+The theory of relativity \textcite{einstein1905} revolutionized physics.
+Many researchers have studied this \autocite{knuth1984,lamport1994}.
+
+\section{Algorithms}\label{sec-intro-algorithms}
+
+For algorithms, use the pseudocode environment:
+
+\begin{algorithm}[H]
+\caption{Binary Search Algorithm}
+\label{alg-binary-search}
+\begin{algorithmic}[1]
+\Require Sorted array $A$, target value $x$
+\Ensure Index of $x$ in $A$, or $-1$ if not found
+
+\State $low \leftarrow 0$
+\State $high \leftarrow \text{length}(A) - 1$
+\While{$low \leq high$}
+    \State $mid \leftarrow \lfloor(low + high) / 2\rfloor$
+    \If{$A[mid] = x$}
+        \State \Return $mid$
+    \ElsIf{$A[mid] < x$}
+        \State $low \leftarrow mid + 1$
+    \Else
+        \State $high \leftarrow mid - 1$
+    \EndIf
+\EndWhile
+\State \Return $-1$
+\end{algorithmic}
+\end{algorithm}
+
+\section{Important Notes for
+Synopsis}\label{important-notes-for-synopsis}
+
+\subsection{Required Elements}\label{required-elements}
+
+Your synopsis should include:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Title and metadata} (in \texttt{\_quarto.yml})
+\item
+  \textbf{Abstract} (add \texttt{\#\#\ Abstract\ \{.unnumbered\}}
+  section)
+\item
+  \textbf{Introduction} with objectives
+\item
+  \textbf{Literature review} with citations
+\item
+  \textbf{Methodology} with figures and equations
+\item
+  \textbf{Expected results} (or preliminary results)
+\item
+  \textbf{References} (automatically generated from citations)
+\end{enumerate}
+
+\subsection{Best Practices}\label{best-practices}
+
+\begin{itemize}
+\tightlist
+\item
+  Use consistent section numbering with \texttt{\{\#sec-label\}} IDs
+\item
+  Number all figures, tables, and equations
+\item
+  Reference them in text using \texttt{@} notation
+\item
+  Add captions to all figures and tables
+\item
+  Cite relevant literature throughout
+\item
+  Use diagrams to visualize concepts
+\end{itemize}
+
+\subsection{Building the Document}\label{building-the-document}
+
+\textbf{Render to PDF:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{quarto}\NormalTok{ render }\AttributeTok{{-}{-}to}\NormalTok{ manit{-}pre{-}thesis{-}synopsis{-}pdf}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Preview while editing:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{quarto}\NormalTok{ preview}
+\end{Highlighting}
+\end{Shaded}
+
+Now write your actual synopsis content, replacing these tutorial
+sections with your research content!
+
+\bookmarksetup{startatroot}
+
+\chapter{Literature Review}\label{sec-literature-review}
+
+This chapter demonstrates citation techniques and literature
+organization.
+
+\section{How to Add References}\label{sec-add-refs}
+
+\subsection{Step 1: Add to BibTeX File}\label{step-1-add-to-bibtex-file}
+
+Open \texttt{references.bib} or \texttt{MyLibrary.bib} and add entries:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\VariableTok{@article}\NormalTok{\{}\OtherTok{author2023}\NormalTok{,}
+  \DataTypeTok{author}\NormalTok{ = \{Last, First and Second, Author\},}
+  \DataTypeTok{title}\NormalTok{ = \{Article Title\},}
+  \DataTypeTok{journal}\NormalTok{ = \{Journal Name\},}
+  \DataTypeTok{year}\NormalTok{ = \{2023\},}
+  \DataTypeTok{volume}\NormalTok{ = \{10\},}
+  \DataTypeTok{number}\NormalTok{ = \{2\},}
+  \DataTypeTok{pages}\NormalTok{ = \{123{-}{-}145\},}
+  \DataTypeTok{doi}\NormalTok{ = \{10.1234/journal.2023.001\}}
+\NormalTok{\}}
+
+\VariableTok{@inproceedings}\NormalTok{\{}\OtherTok{author2022}\NormalTok{,}
+  \DataTypeTok{author}\NormalTok{ = \{Author, Name\},}
+  \DataTypeTok{title}\NormalTok{ = \{Conference Paper Title\},}
+  \DataTypeTok{booktitle}\NormalTok{ = \{Proceedings of Conference Name\},}
+  \DataTypeTok{year}\NormalTok{ = \{2022\},}
+  \DataTypeTok{pages}\NormalTok{ = \{45{-}{-}58\},}
+  \DataTypeTok{publisher}\NormalTok{ = \{Publisher\}}
+\NormalTok{\}}
+
+\VariableTok{@book}\NormalTok{\{}\OtherTok{author2021}\NormalTok{,}
+  \DataTypeTok{author}\NormalTok{ = \{Author, Name\},}
+  \DataTypeTok{title}\NormalTok{ = \{Book Title\},}
+  \DataTypeTok{publisher}\NormalTok{ = \{Publisher Name\},}
+  \DataTypeTok{year}\NormalTok{ = \{2021\},}
+  \DataTypeTok{edition}\NormalTok{ = \{2nd\}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Step 2: Get BibTeX Entries}\label{step-2-get-bibtex-entries}
+
+\textbf{From Google Scholar:} 1. Search for paper 2. Click ``Cite''\\
+3. Select ``BibTeX'' 4. Copy and paste into your \texttt{.bib} file
+
+\textbf{From DOI:} - Visit https://doi2bib.org - Enter DOI - Get BibTeX
+format
+
+\textbf{From Reference Managers:} - Zotero, Mendeley, EndNote all export
+BibTeX
+
+\section{Citation Syntax}\label{sec-cite-syntax}
+
+\subsection{Basic Citations}\label{basic-citations}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2727}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3636}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3636}}@{}}
+\caption{Citation syntax and
+output}\label{tbl-cite-syntax}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Syntax
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Output
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Syntax
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Output
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Narrative & \texttt{@smith2023machine} & Smith and Doe (2023) \\
+Parenthetical & \texttt{{[}@smith2023machine{]}} & (Smith and Doe,
+2023) \\
+Multiple & \texttt{{[}@smith2023machine;\ @jones2022deep{]}} & (Smith
+and Doe, 2023; Jones and Brown, 2022) \\
+With page & \texttt{{[}@smith2023machine,\ p.\ 42{]}} & (Smith and Doe,
+2023, p.~42) \\
+Suppress author & \texttt{{[}-@smith2023machine{]}} & (2023) \\
+\end{longtable}
+
+\subsection{Examples in Context}\label{examples-in-context}
+
+\textbf{Narrative citation:}
+
+Recent work by \textcite{smith2023machine} shows that machine learning
+approaches improve accuracy by 15\%.
+
+\textbf{Parenthetical citation:}
+
+Machine learning has shown significant improvements in recent years
+\autocite{jones2022deep}.
+
+\textbf{Multiple citations:}
+
+Several studies have investigated this phenomenon
+\autocite{smith2023machine,jones2022deep,wilson2023framework}.
+
+\textbf{With page numbers:}
+
+As noted by \textcite[95]{kumar2022analysis}, statistical methods are
+crucial.
+
+\section{Literature Organization}\label{sec-lit-organization}
+
+\subsection{Organizing by Topic}\label{organizing-by-topic}
+
+Organize your literature review by themes, not chronologically:
+
+\subsubsection{Machine Learning
+Approaches}\label{machine-learning-approaches}
+
+Early work in machine learning \textcite{russell2020artificial}
+established foundational algorithms. Recent advances by
+\textcite{smith2023machine} and \textcite{jones2022deep} have improved
+performance significantly. The framework proposed by
+\textcite{wilson2023framework} provides a unified approach.
+
+\subsubsection{Statistical Methods}\label{statistical-methods}
+
+Traditional statistical approaches \textcite{kumar2022analysis} remain
+relevant. However, modern techniques \textcite{martin2023algorithms}
+offer better scalability for large datasets.
+
+\subsubsection{Distributed Computing}\label{distributed-computing}
+
+The rise of big data necessitates distributed frameworks
+\textcite{wang2022distributed}. These systems enable processing of
+massive datasets efficiently.
+
+\subsection{Identifying Research Gaps}\label{identifying-research-gaps}
+
+After reviewing the literature, identify gaps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Gap 1:} While \textcite{smith2023machine} achieved 85\%
+  accuracy, their method requires extensive training data.
+\item
+  \textbf{Gap 2:} Existing approaches
+  \autocite{jones2022deep,wilson2023framework} have not addressed
+  real-time constraints.
+\item
+  \textbf{Gap 3:} As noted by \textcite{kumar2022analysis}, scalability
+  remains an open challenge.
+\end{enumerate}
+
+\section{Comparison Tables}\label{sec-lit-comparison}
+
+Summarize related work in tables:
+
+\begin{longtable}[]{@{}lllll@{}}
+\caption{Comparison of related
+work}\label{tbl-lit-comparison}\tabularnewline
+\toprule\noalign{}
+Study & Method & Dataset & Accuracy & Year \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Study & Method & Dataset & Accuracy & Year \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textcite{smith2023machine} & Deep Learning & ImageNet & 91.2\% &
+2023 \\
+\textcite{jones2022deep} & Neural Network & CIFAR-10 & 89.5\% & 2022 \\
+\textcite{patel2023neural} & CNN & Custom & 87.8\% & 2023 \\
+\textcite{martin2023algorithms} & Random Forest & UCI & 83.2\% & 2023 \\
+\end{longtable}
+
+Reference the table: See Table~\ref{tbl-lit-comparison} for a detailed
+comparison.
+
+\section{Critical Analysis}\label{sec-critical-analysis}
+
+Don't just summarize - analyze critically:
+
+\textbf{Strengths:} - The method by \textcite{smith2023machine} achieves
+high accuracy - Approach of \textcite{wilson2023framework} is
+computationally efficient - \textcite{jones2022deep} provides strong
+theoretical foundations
+
+\textbf{Limitations:} - Most studies
+\autocite{smith2023machine,jones2022deep} use limited datasets -
+Real-time performance not addressed by \textcite{wilson2023framework}\\
+- Scalability concerns raised by \textcite{kumar2022analysis} remain
+unresolved
+
+\textbf{Research Opportunities:} Based on gaps identified above, this
+work proposes to\ldots{}
+
+\section{Connection to Your Work}\label{sec-connection}
+
+End with how your work fits in:
+
+While existing approaches
+\autocite{smith2023machine,jones2022deep,wilson2023framework} have made
+significant progress, they share common limitations. This research
+addresses these gaps by proposing a novel framework that combines the
+strengths of \textcite{smith2023machine} and
+\textcite{wilson2023framework} while overcoming the scalability issues
+identified by \textcite{kumar2022analysis}.
+
+The methodology described in Chapter~\ref{sec-methodology} builds upon
+these foundations to develop an improved approach.
+
+\textbf{Remember:} - Cite sources for all claims - Group by themes, not
+chronologically - Critically analyze, don't just summarize\\
+- Identify specific gaps your work addresses - Use tables and diagrams
+to clarify comparisons - Connect literature review to your methodology
+
+\bookmarksetup{startatroot}
+
+\chapter{Methodology}\label{sec-methodology}
+
+This chapter demonstrates how to present your research methodology with
+proper figures, tables, equations, and algorithms.
+
+\section{Figures and Diagrams}\label{sec-figures-diagrams}
+
+\subsection{Flowcharts with Mermaid}\label{flowcharts-with-mermaid}
+
+For process flows and workflows, use Mermaid diagrams:
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=2.44in,height=8.37in]{Chapters/03_methodology_files/figure-latex/mermaid-figure-1.png}
+
+}
+
+\caption{\label{fig-workflow}Methodology workflow.}
+
+\end{figure}%
+
+\textbf{Reference:} See Figure~\ref{fig-workflow} for the overall
+process.
+
+\section{Mathematical Formulation}\label{sec-math-formulation}
+
+\subsection{Problem Definition}\label{problem-definition}
+
+Let \(\mathbf{X} = \{x_1, x_2, \ldots, x_n\}\) be the input dataset
+where \(x_i \in \mathbb{R}^d\). The objective is to learn a function:
+
+\begin{equation}\phantomsection\label{eq-objective}{
+f: \mathbb{R}^d \rightarrow \mathbb{C}
+}\end{equation}
+
+where \(\mathbb{C} = \{c_1, c_2, \ldots, c_k\}\) is the set of \(k\)
+classes.
+
+\subsection{Preprocessing}\label{preprocessing}
+
+\textbf{Normalization:} Each feature is normalized using z-score
+normalization:
+
+\begin{equation}\phantomsection\label{eq-normalization}{
+x'_i = \frac{x_i - \mu}{\sigma}
+}\end{equation}
+
+where \(\mu\) is the mean and \(\sigma\) is the standard deviation.
+
+\textbf{Feature extraction:} Principal Component Analysis (PCA)
+transforms data:
+
+\begin{equation}\phantomsection\label{eq-pca}{
+\mathbf{Y} = \mathbf{X} \mathbf{W}
+}\end{equation}
+
+where \(\mathbf{W}\) is the matrix of eigenvectors.
+
+\subsection{Model Formulation}\label{model-formulation}
+
+The classification model is defined as:
+
+\begin{equation}\phantomsection\label{eq-classification}{
+\hat{y} = \arg\max_{c \in \mathbb{C}} P(y = c | \mathbf{x}, \boldsymbol{\theta})
+}\end{equation}
+
+where \(\boldsymbol{\theta}\) represents model parameters.
+
+\textbf{Loss function:}
+
+\begin{equation}\phantomsection\label{eq-loss}{
+\mathcal{L}(\boldsymbol{\theta}) = -\frac{1}{N} \sum_{i=1}^{N} \sum_{c=1}^{k} y_{ic} \log(p_{ic})
+}\end{equation}
+
+where \(y_{ic}\) is the ground truth and \(p_{ic}\) is the predicted
+probability.
+
+\subsection{Optimization}\label{optimization}
+
+Parameters are optimized using gradient descent:
+
+\begin{equation}\phantomsection\label{eq-gradient-descent}{
+\boldsymbol{\theta}_{t+1} = \boldsymbol{\theta}_t - \alpha \nabla_{\boldsymbol{\theta}} \mathcal{L}(\boldsymbol{\theta}_t)
+}\end{equation}
+
+where \(\alpha\) is the learning rate.
+
+\textbf{Convergence criterion:}
+
+\begin{equation}\phantomsection\label{eq-convergence}{
+\|\nabla_{\boldsymbol{\theta}} \mathcal{L}(\boldsymbol{\theta})\| < \epsilon
+}\end{equation}
+
+where \(\epsilon = 10^{-6}\) is the tolerance threshold.
+
+\section{Algorithms}\label{sec-algorithms}
+
+Algorithms can be written using the pseudocode environment for
+professional formatting.
+
+\subsection{Training Algorithm}\label{training-algorithm}
+
+\begin{algorithm}[H]
+\caption{Model Training Algorithm}
+\label{alg-training}
+\begin{algorithmic}[1]
+\Require Training data $X$, labels $y$, learning rate $\alpha$, epochs $E$
+\Ensure Trained model parameters $\theta$
+
+\State Initialize $\theta$ randomly
+\For{$epoch = 1$ to $E$}
+    \State Shuffle training data
+    \ForAll{batch $B$ in $X$}
+        \State Compute predictions: $\hat{y} = f(B; \theta)$
+        \State Compute loss: $L = \text{Loss}(\hat{y}, y)$
+        \State Compute gradients: $g = \nabla_{\theta} L$
+        \State Update parameters: $\theta \leftarrow \theta - \alpha \cdot g$
+    \EndFor
+    \State Validate on validation set
+    \If{validation\_loss $<$ best\_loss}
+        \State Save $\theta$ as best\_model
+    \EndIf
+\EndFor
+\State \Return best\_model
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Prediction Algorithm}\label{prediction-algorithm}
+
+\begin{algorithm}[H]
+\caption{Inference Algorithm}
+\label{alg-inference}
+\begin{algorithmic}[1]
+\Require Test sample $x$, trained model $\theta$
+\Ensure Predicted class $\hat{c}$ and confidence score
+
+\State Preprocess $x$ using normalization (Eq. @eq-normalization)
+\State Extract features: $x' = \text{FeatureExtract}(x)$
+\State Compute class probabilities:
+\ForAll{class $c$ in $C$}
+    \State $p_c = P(y = c | x'; \theta)$
+\EndFor
+\State Find predicted class: $\hat{c} = \arg\max(p_c)$
+\State Compute confidence: $\text{conf} = \max(p_c)$
+\State \Return $\hat{c}$, conf
+\end{algorithmic}
+\end{algorithm}
+
+\section{Experimental Setup}\label{sec-experimental-setup}
+
+\subsection{Datasets}\label{datasets}
+
+\begin{longtable}[]{@{}lllll@{}}
+\caption{Datasets used in
+experiments}\label{tbl-datasets}\tabularnewline
+\toprule\noalign{}
+Dataset & Samples & Features & Classes & Split \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Dataset & Samples & Features & Classes & Split \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Dataset A & 10,000 & 128 & 10 & 70/15/15 \\
+Dataset B & 25,000 & 256 & 5 & 80/10/10 \\
+Dataset C & 50,000 & 512 & 20 & 75/12.5/12.5 \\
+\end{longtable}
+
+Split indicates train/validation/test percentages.
+
+\subsection{Hyperparameters}\label{hyperparameters}
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{Hyperparameter
+configuration}\label{tbl-hyperparams}\tabularnewline
+\toprule\noalign{}
+Parameter & Value & Description \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Parameter & Value & Description \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Learning rate (α) & 0.001 & Initial learning rate \\
+Batch size & 32 & Training batch size \\
+Epochs (E) & 100 & Maximum training epochs \\
+Dropout & 0.3 & Dropout probability \\
+Optimizer & Adam & Optimization algorithm \\
+Weight decay & 1e-4 & L2 regularization \\
+\end{longtable}
+
+See Table~\ref{tbl-hyperparams} for complete parameter settings.
+
+\subsection{Evaluation Metrics}\label{evaluation-metrics}
+
+\textbf{Accuracy:}
+
+\begin{equation}\phantomsection\label{eq-accuracy}{
+\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}
+}\end{equation}
+
+\textbf{Precision:}
+
+\begin{equation}\phantomsection\label{eq-precision}{
+\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
+}\end{equation}
+
+\textbf{Recall:}
+
+\begin{equation}\phantomsection\label{eq-recall}{
+\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+}\end{equation}
+
+\textbf{F1-Score:}
+
+\begin{equation}\phantomsection\label{eq-f1}{
+\text{F1} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+}\end{equation}
+
+\section{Implementation Details}\label{sec-implementation}
+
+\subsection{Software and Libraries}\label{software-and-libraries}
+
+\textbf{Programming environment:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Python version}
+\NormalTok{Python }\FloatTok{3.10.12}
+
+\CommentTok{\# Key libraries}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np          }\CommentTok{\# v1.24.3}
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd         }\CommentTok{\# v2.0.2}
+\ImportTok{import}\NormalTok{ scikit}\OperatorTok{{-}}\NormalTok{learn }\ImportTok{as}\NormalTok{ sklearn  }\CommentTok{\# v1.2.2}
+\ImportTok{import}\NormalTok{ tensorflow }\ImportTok{as}\NormalTok{ tf     }\CommentTok{\# v2.13.0}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Hardware specifications:}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Hardware configuration}\label{tbl-hardware}\tabularnewline
+\toprule\noalign{}
+Component & Specification \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Component & Specification \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+CPU & Intel Core i7-12700K \\
+RAM & 32 GB DDR4 \\
+GPU & NVIDIA RTX 3090 (24GB) \\
+Storage & 1TB NVMe SSD \\
+\end{longtable}
+
+\subsection{Model Architecture}\label{model-architecture}
+
+\textbf{Network structure:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model }\OperatorTok{=}\NormalTok{ Sequential([}
+\NormalTok{    Dense(}\DecValTok{256}\NormalTok{, activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{, input\_dim}\OperatorTok{=}\DecValTok{128}\NormalTok{),}
+\NormalTok{    Dropout(}\FloatTok{0.3}\NormalTok{),}
+\NormalTok{    Dense(}\DecValTok{128}\NormalTok{, activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
+\NormalTok{    Dropout(}\FloatTok{0.3}\NormalTok{),}
+\NormalTok{    Dense(}\DecValTok{64}\NormalTok{, activation}\OperatorTok{=}\StringTok{\textquotesingle{}relu\textquotesingle{}}\NormalTok{),}
+\NormalTok{    Dense(num\_classes, activation}\OperatorTok{=}\StringTok{\textquotesingle{}softmax\textquotesingle{}}\NormalTok{)}
+\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Layer dimensions:}
+
+\begin{equation}\phantomsection\label{eq-architecture}{
+\begin{aligned}
+\text{Input} &: \mathbb{R}^{128} \\
+\text{Hidden}_1 &: \mathbb{R}^{256} \\
+\text{Hidden}_2 &: \mathbb{R}^{128} \\
+\text{Hidden}_3 &: \mathbb{R}^{64} \\
+\text{Output} &: \mathbb{R}^{k}
+\end{aligned}
+}\end{equation}
+
+\section{Summary}\label{summary}
+
+This chapter presented:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  System architecture and diagrams
+\item
+  Mathematical formulation with equations
+\item
+  Training and inference algorithms
+\item
+  Experimental setup with datasets and hyperparameters
+\end{enumerate}
+
+Results and discussion are presented in Chapter~\ref{sec-results}.
+
+\bookmarksetup{startatroot}
+
+\chapter{Results and Discussion}\label{sec-results}
+
+This chapter demonstrates various table types and result presentation
+formats.
+
+\section{Basic Tables}\label{sec-basic-tables}
+
+\subsection{Simple Table}\label{simple-table}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Experimental results}\label{tbl-results}\tabularnewline
+\toprule\noalign{}
+Metric & Value \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Metric & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Accuracy & 89.3\% \\
+Precision & 87.5\% \\
+Recall & 91.2\% \\
+F1-Score & 88.3\% \\
+\end{longtable}
+
+Reference: Table~\ref{tbl-results} shows the performance metrics.
+
+\section{Table Alignment}\label{sec-table-align}
+
+Control column alignment:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{|}\NormalTok{ Left }\PreprocessorTok{|}\NormalTok{ Center }\PreprocessorTok{|}\NormalTok{ Right }\PreprocessorTok{|}
+\PreprocessorTok{|:{-}{-}{-}{-}{-}|:{-}{-}{-}{-}{-}{-}:|{-}{-}{-}{-}{-}{-}:|}
+\PreprocessorTok{|}\NormalTok{ A    }\PreprocessorTok{|}\NormalTok{ B      }\PreprocessorTok{|}\NormalTok{ C     }\PreprocessorTok{|}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lcr@{}}
+\caption{Performance comparison with
+alignment}\label{tbl-aligned}\tabularnewline
+\toprule\noalign{}
+Algorithm & Time (ms) & Accuracy \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Algorithm & Time (ms) & Accuracy \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Method A & 120 & 85.3\% \\
+Method B & 150 & 89.7\% \\
+Method C & 180 & 92.1\% \\
+\end{longtable}
+
+\section{Multi-line Tables}\label{sec-multiline}
+
+For complex content:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2424}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3939}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1818}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1818}}@{}}
+\caption{Detailed comparison of
+methods}\label{tbl-multiline}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Method
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pros
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cons
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Method
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pros
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cons
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Deep Learning & Uses neural networks with multiple layers & High
+accuracy, learns features automatically & Requires large dataset,
+computationally expensive \\
+Random Forest & Ensemble of decision trees & Handles non-linear data,
+robust & Can overfit, slow for large datasets \\
+SVM & Finds optimal hyperplane & Effective in high dimensions &
+Sensitive to parameters \\
+\end{longtable}
+
+\section{Wide Tables}\label{sec-wide-tables}
+
+For tables with many columns:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.0938}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1146}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1146}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1042}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.0938}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1042}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1042}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1042}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1042}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.0625}}@{}}
+\caption{Comprehensive experimental
+results}\label{tbl-wide}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Dataset
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Train Size
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Test Size
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Features
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Classes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Baseline
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Method 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Method 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Method 3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Best
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Dataset
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Train Size
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Test Size
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Features
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Classes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Baseline
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Method 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Method 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Method 3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Best
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+MNIST & 60000 & 10000 & 784 & 10 & 92.3\% & 95.1\% & 96.8\% & 97.2\% &
+97.2\% \\
+CIFAR-10 & 50000 & 10000 & 3072 & 10 & 75.4\% & 82.3\% & 86.1\% & 89.5\%
+& 89.5\% \\
+ImageNet & 1281167 & 50000 & 150528 & 1000 & 68.2\% & 74.5\% & 78.9\% &
+82.1\% & 82.1\% \\
+\end{longtable}
+
+\section{Grouped Tables}\label{sec-grouped}
+
+Organize related results:
+
+\textbf{Table: Results by Category}
+
+\begin{longtable}[]{@{}llll@{}}
+\caption{Results grouped by task}\label{tbl-grouped}\tabularnewline
+\toprule\noalign{}
+Category & Precision & Recall & F1 \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Category & Precision & Recall & F1 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Image Classification} & & & \\
+Model A & 85.3\% & 83.1\% & 84.2\% \\
+Model B & 89.7\% & 87.5\% & 88.6\% \\
+\textbf{Object Detection} & & & \\
+Model C & 78.4\% & 76.2\% & 77.3\% \\
+Model D & 82.1\% & 80.5\% & 81.3\% \\
+\end{longtable}
+
+\section{Statistical Significance}\label{sec-statistics}
+
+\begin{longtable}[]{@{}llll@{}}
+\caption{Statistical significance tests (* p\textless0.05, ***
+p\textless0.001)}\label{tbl-stats}\tabularnewline
+\toprule\noalign{}
+Comparison & t-statistic & p-value & Significant \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Comparison & t-statistic & p-value & Significant \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A vs B & 3.45 & 0.001 & Yes*** \\
+B vs C & 2.18 & 0.032 & Yes* \\
+A vs C & 1.67 & 0.098 & No \\
+\end{longtable}
+
+\section{Ablation Study}\label{sec-ablation}
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{Ablation study results}\label{tbl-ablation}\tabularnewline
+\toprule\noalign{}
+Component Removed & Accuracy & Drop \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Component Removed & Accuracy & Drop \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Full Model & 92.3\% & - \\
+- Feature A & 89.1\% & -3.2\% \\
+- Feature B & 90.5\% & -1.8\% \\
+- Feature C & 87.2\% & -5.1\% \\
+- All Features & 78.4\% & -13.9\% \\
+\end{longtable}
+
+\section{Discussion}\label{sec-discussion}
+
+Analyze and interpret the results:
+
+\textbf{Key Findings:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The proposed method achieves 92.3\% accuracy
+  (Table~\ref{tbl-results}), outperforming the baseline by 10\%.
+\item
+  Statistical tests (Table~\ref{tbl-stats}) confirm the improvements are
+  significant (p \textless{} 0.001).
+\item
+  Ablation study (Table~\ref{tbl-ablation}) shows Feature C is most
+  critical (-5.1\% when removed).
+\end{enumerate}
+
+\textbf{Comparison with State-of-the-Art:}
+
+As shown in Table~\ref{tbl-aligned}, our Method C achieves the best
+performance while maintaining reasonable computational time.
+
+\bookmarksetup{startatroot}
+
+\chapter{Conclusions and Future Work}\label{sec-conclusions}
+
+Summarize your research contributions and outline future directions.
+
+\section{Summary of Work}\label{sec-summary}
+
+Provide a concise summary of your research:
+
+This thesis presented a novel approach to {[}problem domain{]}. The main
+contributions include:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Development of a new methodology for {[}specific task{]}
+\item
+  Experimental validation achieving X\% improvement over baseline
+\item
+  Comprehensive analysis of {[}specific aspect{]}
+\end{enumerate}
+
+\section{Key Contributions}\label{sec-contributions}
+
+List your main contributions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Contribution 1:} Proposed a new
+  {[}method/algorithm/framework{]} that improves {[}metric{]} by X\%
+\item
+  \textbf{Contribution 2:} Demonstrated that {[}finding{]} leads to
+  better {[}outcome{]}
+\item
+  \textbf{Contribution 3:} Provided comprehensive empirical analysis
+  across {[}number{]} datasets
+\item
+  \textbf{Contribution 4:} Released open-source implementation for
+  reproducibility
+\end{enumerate}
+
+\section{Limitations}\label{sec-limitations}
+
+Acknowledge limitations of your work:
+
+\begin{itemize}
+\tightlist
+\item
+  The proposed method requires {[}resource/constraint{]}
+\item
+  Performance degrades when {[}specific condition{]}
+\item
+  Current implementation is limited to {[}scope{]}
+\end{itemize}
+
+\section{Future Research Directions}\label{sec-future}
+
+Suggest areas for future work:
+
+\subsection{Short-term Directions}\label{short-term-directions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Extend the approach to handle {[}new scenario{]}
+\item
+  Optimize computational efficiency for {[}application{]}
+\item
+  Investigate performance on {[}additional datasets{]}
+\end{enumerate}
+
+\subsection{Long-term Vision}\label{long-term-vision}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Develop theoretical foundations for {[}aspect{]}
+\item
+  Explore integration with {[}related technology{]}
+\item
+  Apply methodology to {[}broader domain{]}
+\end{enumerate}
+
+\section{Closing Remarks}\label{sec-closing}
+
+The findings of this research demonstrate that {[}key takeaway{]}. This
+work opens new possibilities for {[}future applications{]}.
+
+\bookmarksetup{startatroot}
+
+\chapter{Publications}\label{sec-publications}
+
+List publications arising from this research work.
+
+\section{Journal Articles}\label{sec-journals}
+
+\subsection{Published}\label{published}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Author1, A., Author2, B., and Author3, C.} (2024). ``Complete
+  Article Title.'' \emph{Journal Name}, vol.~10, no. 2, pp.~123-145.
+  DOI:
+  \href{https://doi.org/10.1234/journal.2024.001}{10.1234/journal.2024.001}
+\item
+  \textbf{Author1, A. and Author2, B.} (2023). ``Second Article Title.''
+  \emph{Another Journal}, vol.~8, no. 4, pp.~567-589. DOI:
+  \href{https://doi.org/10.5678/journal.2023.045}{10.5678/journal.2023.045}
+\end{enumerate}
+
+\subsection{Under Review}\label{under-review}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{Author1, A., Author3, C., and Author4, D.} ``Title of
+  Submitted Paper.'' \emph{Target Journal}, submitted October 2024.
+\end{enumerate}
+
+\section{Conference Papers}\label{sec-conferences}
+
+\subsection{Published}\label{published-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Author1, A. and Author2, B.} (2024). ``Conference Paper
+  Title.'' In \emph{Proceedings of the International Conference on
+  Topic}, pp.~100-110, City, Country. DOI:
+  \href{https://doi.org/10.1109/CONF.2024.123456}{10.1109/CONF.2024.123456}
+\item
+  \textbf{Author1, A., Author3, C., and Author5, E.} (2023). ``Another
+  Conference Paper.'' In \emph{IEEE Conference on Related Topic},
+  pp.~45-58, City, Country.
+\end{enumerate}
+
+\subsection{Accepted}\label{accepted}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{Author1, A. and Author2, B.} ``Upcoming Conference Paper.'' In
+  \emph{International Conference Name}, to appear, 2025.
+\end{enumerate}
+
+\section{Book Chapters}\label{sec-chapters}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Author1, A. and Author2, B.} (2024). ``Chapter Title.'' In
+  \emph{Book Title}, Editor, Ed. Publisher, pp.~78-102. ISBN:
+  978-0-123456-78-9
+\end{enumerate}
+
+\section{Preprints and Technical Reports}\label{sec-preprints}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Author1, A., Author2, B., and Author3, C.} ``Preprint Title.''
+  arXiv:2024.12345, 2024. Available:
+  \url{https://arxiv.org/abs/2024.12345}
+\end{enumerate}
+
+\section{Patents}\label{sec-patents}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Author1, A. and Author2, B.} ``Patent Title.'' Patent
+  No.~US1234567B2, filed Jan 2023, granted Dec 2024.
+\end{enumerate}
+
+\section{Publication Metrics}\label{sec-metrics}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Publication summary}\label{tbl-pub-metrics}\tabularnewline
+\toprule\noalign{}
+Type & Count \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Type & Count \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Journal Articles & 2 \\
+Conference Papers & 2 \\
+Under Review & 1 \\
+Citations (Total) & 45 \\
+h-index & 3 \\
+\end{longtable}
+
+\section{Awards and Recognition}\label{sec-awards}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Best Paper Award:} Conference Name, 2024
+\item
+  \textbf{Outstanding Reviewer:} Journal Name, 2023
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
+\chapter*{References}\label{references}
+\addcontentsline{toc}{chapter}{References}
+
+\markboth{References}{References}
+
+All cited references will appear here automatically.
+
+\printbibliography[heading=none]
+
+
+
+
+
+\end{document}

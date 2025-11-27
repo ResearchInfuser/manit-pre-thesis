@@ -1,0 +1,60 @@
+% \usepackage[utf8]{inputenc} % Required for inputting international characters
+%\usepackage[T1]{fontenc} % Output font encoding for international characters; causes problems for xelatex
+
+%\usepackage{mathpazo} % Use the Palatino font by default
+
+% \usepackage[backend=bibtex, style=authoryear, natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+% \usepackage{biblatex}
+
+\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+\usepackage{scrlayer-scrpage}
+% \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{algpseudocode}
+
+\usepackage[none]{hyphenat} % Prevent LaTeX from hyphenating words
+\sloppy                      % Loosen spacing to avoid overfull lines
+\setlength{\emergencystretch}{3em} % Extra flexibility for justification
+
+%----------------------------------------------------------------------------------------
+%	MARGINS
+%----------------------------------------------------------------------------------------
+
+\geometry{
+	headheight=2ex,
+	includehead,
+	includefoot
+}
+
+\raggedbottom
+
+\AtBeginDocument{
+\hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
+\hypersetup{pdfauthor=\authorName} % Set the PDF's author to your name
+\hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
+}
+
+
+% ---- Chapter title settings
+\booltrue{chapteroneline}
+\renewcommand{\mdtChapapp}{}
+\renewcommand{\autodot}{}
+\renewcommand{\abovechapterskip}{\vspace*{0pt}}
+
+% Remove "Contents" from header after Table of Contents
+\patchcmd{\tableofcontents}{\@starttoc{toc}}{%
+  \markboth{}{}%
+  \@starttoc{toc}%
+}{}{}
+
+% Reduce font size and spacing in bibliography
+\AtBeginDocument{%
+  \AtBeginBibliography{%
+    \footnotesize
+    \setlength{\bibitemsep}{0pt}
+    \setlength{\parskip}{0pt}
+  }%
+}
+
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}

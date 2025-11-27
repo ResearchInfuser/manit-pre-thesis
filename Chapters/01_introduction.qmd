@@ -1,0 +1,410 @@
+# Introduction {#sec-introduction}
+
+This template demonstrates how to write a thesis synopsis using Quarto. Each section below shows the syntax and rendered output.
+
+
+
+## Sections and Subsections {#sec-sections}
+
+Use `#` symbols for headings. Each `#` represents a level:
+
+```markdown
+# Chapter Title (appears in Table of Contents)
+## Section
+### Subsection  
+#### Subsubsection
+```
+
+**Add custom IDs for cross-referencing:**
+
+```markdown
+## My Section {#sec-custom-id}
+```
+
+Then reference it: `@sec-custom-id` produces @sec-sections
+
+
+
+## Text Formatting {#sec-text-format}
+
+| Syntax | Output |
+|--------|--------|
+| `**bold text**` | **bold text** |
+| `*italic text*` | *italic text* |
+| `` `code` `` | `code` |
+| `~~strikethrough~~` | ~~strikethrough~~ |
+| `H~2~O` (subscript) | H~2~O |
+| `X^2^` (superscript) | X^2^ |
+
+: Text formatting options {#tbl-text-format}
+
+
+
+## Lists {#sec-lists}
+
+**Numbered list:**
+
+```markdown
+1. First item
+2. Second item  
+3. Third item
+```
+
+Output:
+
+1. First item
+2. Second item
+3. Third item
+
+**Bullet list:**
+
+```markdown
+- Item one
+- Item two
+  - Nested item
+```
+
+Output:
+
+- Item one
+- Item two
+  - Nested item
+
+
+
+## Figures {#sec-figures}
+
+### Images from Files
+
+Place images in `figures/` directory:
+
+```markdown
+![Caption text](figures/image.png){#fig-label width=80%}
+```
+
+**Attributes:**
+- `#fig-label` - ID for cross-referencing  
+- `width=80%` - Width (percentage or absolute like `5in`)
+- `fig-align="center"` - Alignment (left, center, right)
+
+### Diagrams with Mermaid
+
+Mermaid diagrams allow you to create flowcharts, sequence diagrams, and more using text-based syntax.
+
+**Basic syntax example:**
+
+````markdown
+::: {#fig-label}
+```{mermaid}
+flowchart TD
+    A[Start] --> B{Decision?}
+    B -->|Yes| C[Process A]
+    B -->|No| D[Process B]
+```
+Caption for the diagram.
+:::
+````
+
+**See @sec-methodology for a working example.**
+
+### Multiple Subfigures
+
+Create side-by-side figures:
+
+````markdown
+::: {#fig-comparison layout-ncol=2}
+
+![Method A](figures/method-a.png){#fig-method-a}
+
+![Method B](figures/method-b.png){#fig-method-b}
+
+Comparison of two methods.
+:::
+````
+
+Reference subfigures: `@fig-method-a` and `@fig-method-b`
+
+
+
+## Tables {#sec-tables}
+
+### Basic Table
+
+**Syntax:**
+
+```markdown
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Data A   | Data B   | Data C   |
+| Data D   | Data E   | Data F   |
+
+: Table caption {#tbl-label}
+```
+
+**Output:**
+
+| Method | Accuracy | F1-Score |
+|--------|----------|----------|
+| Baseline | 0.82 | 0.79 |
+| Proposed | 0.91 | 0.88 |
+| State-of-art | 0.87 | 0.84 |
+
+: Performance comparison of different methods {#tbl-performance}
+
+**Reference:** `@tbl-performance` produces @tbl-performance
+
+### Column Alignment
+
+```markdown
+| Left | Center | Right |
+|:-----|:------:|------:|
+| A    | B      | C     |
+```
+
+Output:
+
+| Algorithm | Complexity | Memory |
+|:----------|:----------:|-------:|
+| Method A  | O(n)       | 10 MB  |
+| Method B  | O(n log n) | 25 MB  |
+
+: Algorithm complexity {#tbl-complexity}
+
+
+
+## Equations {#sec-equations}
+
+### Inline Equations
+
+**Syntax:** `$E = mc^2$`  
+**Output:** The famous equation $E = mc^2$ shows energy-mass equivalence.
+
+### Display Equations
+
+**Single equation:**
+
+```markdown
+$$
+f(x) = \int_{-\infty}^{\infty} e^{-x^2} dx
+$$ {#eq-gaussian}
+```
+
+**Output:**
+
+$$
+f(x) = \int_{-\infty}^{\infty} e^{-x^2} dx
+$$ {#eq-gaussian}
+
+**Reference:** `@eq-gaussian` produces @eq-gaussian
+
+### Multi-line Equations
+
+**Syntax:**
+
+```markdown
+$$
+\begin{aligned}
+\nabla \cdot \mathbf{E} &= \frac{\rho}{\epsilon_0} \\
+\nabla \cdot \mathbf{B} &= 0 \\
+\nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &= \mu_0\mathbf{J} + \mu_0\epsilon_0\frac{\partial \mathbf{E}}{\partial t}
+\end{aligned}
+$$ {#eq-maxwell}
+```
+
+**Output:**
+
+$$
+\begin{aligned}
+\nabla \cdot \mathbf{E} &= \frac{\rho}{\epsilon_0} \\
+\nabla \cdot \mathbf{B} &= 0 \\
+\nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &= \mu_0\mathbf{J} + \mu_0\epsilon_0\frac{\partial \mathbf{E}}{\partial t}
+\end{aligned}
+$$ {#eq-maxwell}
+
+### Matrices
+
+```markdown
+$$
+\mathbf{A} = \begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{bmatrix}
+$$ {#eq-matrix}
+```
+
+Output:
+
+$$
+\mathbf{A} = \begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{bmatrix}
+$$ {#eq-matrix}
+
+
+
+## Code Blocks {#sec-code}
+
+### Syntax Highlighted Code
+
+**Python example:**
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate data
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# Plot
+plt.plot(x, y)
+plt.xlabel('x')
+plt.ylabel('sin(x)')
+plt.show()
+```
+
+**Other languages:**
+
+````markdown
+```r
+# R code
+data <- c(1, 2, 3, 4, 5)
+mean(data)
+```
+
+```javascript
+// JavaScript
+function factorial(n) {
+  return n <= 1 ? 1 : n * factorial(n - 1);
+}
+```
+````
+
+
+
+## Cross-References {#sec-cross-ref}
+
+| Type | Syntax | Example Output |
+|------|--------|----------------|
+| Section | `@sec-label` | @sec-figures |
+| Figure | `@fig-label` | @fig-example |
+| Table | `@tbl-label` | @tbl-performance |
+| Equation | `@eq-label` | @eq-gaussian |
+
+: Cross-reference syntax {#tbl-crossref}
+
+**Multiple references:**
+
+```markdown
+See @sec-figures and @sec-tables for examples.
+Figures @fig-example and @tbl-example show basic elements.
+```
+
+
+
+## Citations {#sec-citations}
+
+Add references to `references.bib` or `MyLibrary.bib`:
+
+```bibtex
+@article{smith2023,
+  author = {Smith, John},
+  title = {Example Paper},
+  journal = {Journal Name},
+  year = {2023},
+  volume = {10},
+  pages = {1--10}
+}
+```
+
+**Citation syntax:**
+
+| Syntax | Output |
+|--------|--------|
+| `@einstein1905` | Einstein (1905) |
+| `[@einstein1905]` | (Einstein, 1905) |
+| `[@einstein1905; @knuth1984]` | (Einstein, 1905; Knuth, 1984) |
+| `[@einstein1905, p. 23]` | (Einstein, 1905, p. 23) |
+
+: Citation examples {#tbl-citations}
+
+**Example in text:**
+
+The theory of relativity @einstein1905 revolutionized physics. Many researchers have studied this [@knuth1984; @lamport1994].
+
+
+
+## Algorithms {#sec-intro-algorithms}
+
+For algorithms, use the pseudocode environment:
+
+```pseudocode
+#| label: alg-binary-search
+\begin{algorithm}[H]
+\caption{Binary Search Algorithm}
+\begin{algorithmic}[1]
+\Require Sorted array $A$, target value $x$
+\Ensure Index of $x$ in $A$, or $-1$ if not found
+
+\State $low \leftarrow 0$
+\State $high \leftarrow \text{length}(A) - 1$
+\While{$low \leq high$}
+    \State $mid \leftarrow \lfloor(low + high) / 2\rfloor$
+    \If{$A[mid] = x$}
+        \State \Return $mid$
+    \ElsIf{$A[mid] < x$}
+        \State $low \leftarrow mid + 1$
+    \Else
+        \State $high \leftarrow mid - 1$
+    \EndIf
+\EndWhile
+\State \Return $-1$
+\end{algorithmic}
+\end{algorithm}
+```
+
+
+
+## Important Notes for Synopsis
+
+### Required Elements
+
+Your synopsis should include:
+
+1. **Title and metadata** (in `_quarto.yml`)
+2. **Abstract** (add `## Abstract {.unnumbered}` section)
+3. **Introduction** with objectives
+4. **Literature review** with citations
+5. **Methodology** with figures and equations
+6. **Expected results** (or preliminary results)
+7. **References** (automatically generated from citations)
+
+### Best Practices
+
+- Use consistent section numbering with `{#sec-label}` IDs
+- Number all figures, tables, and equations
+- Reference them in text using `@` notation
+- Add captions to all figures and tables
+- Cite relevant literature throughout
+- Use diagrams to visualize concepts
+
+### Building the Document
+
+**Render to PDF:**
+```bash
+quarto render --to manit-pre-thesis-synopsis-pdf
+```
+
+**Preview while editing:**
+```bash
+quarto preview
+```
+
+
+
+Now write your actual synopsis content, replacing these tutorial sections with your research content!

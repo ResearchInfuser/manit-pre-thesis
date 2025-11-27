@@ -1,0 +1,78 @@
+project:
+  type: book
+  output-dir: draft
+  
+book:
+  title: "Your Thesis Title Here"
+  output-file: "PreThesisSynopsis"
+  date: "Month, Year"
+  author:
+    name: "Your Name"
+    url: http://your-website.com
+  downloads: [pdf]
+  chapters:
+    - index.qmd
+    - Chapters/02_literature_review.qmd
+    - Chapters/03_methodology.qmd
+    - Chapters/04_results_and_discussion.qmd
+    - Chapters/05_conclusions.qmd
+    - Chapters/06_publications.qmd
+    - Chapters/07_references.qmd
+  search: true
+
+thesis:
+  degree-name: "Doctor of Philosophy"
+  scholar-number: 'YOUR_SCHOLAR_NUMBER'
+  department: "Your Department Name"
+  institute: "Maulana Azad National Institute of Technology, Bhopal"
+  phd-start-date: "Month Year"
+  phd-end-date: "Month Year"
+  keywords: "Your Keywords Here"
+  university-line1: "Maulana Azad" 
+  university-line2: "National Institute of Technology,"
+  university-location: "Bhopal - 462003 (INDIA)"
+  
+  supervisor:
+    name: "Dr. Supervisor Name"
+    designation: "Designation"
+    department: "Your Department Name"
+    institute: "Maulana Azad National Institute of Technology, Bhopal"
+    url:
+  
+  co-supervisor:
+    name: "Dr. Co-Supervisor Name"
+    designation: "Designation"
+    department: "Department Name"
+    institute: "Institute Name"
+    url:
+  
+  logo: images/logo.png
+  logo-height: "1.75in"
+
+bibliography: [references.bib]
+
+execute:
+  echo: false
+  code-overflow: wrap
+
+link-citations: true
+
+format:
+  manit-synopsis-pdf: 
+    urlcolor: red
+    keep-tex: true
+    toclinkcolor: black
+    toc-depth: 2
+    documentclass: ManitSynopsis
+    papersize: a4
+    pdf-engine: lualatex
+    cite-method: biblatex
+    biblatexoptions:
+      - backend=biber
+      - style=ieee
+
+  html: default
+    
+  docx: 
+    biblio-style: ieee
+    link-citations: true

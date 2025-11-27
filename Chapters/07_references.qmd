@@ -1,0 +1,6 @@
+# References {.unnumbered}
+
+All cited references will appear here automatically.
+
+::: {#refs}
+:::

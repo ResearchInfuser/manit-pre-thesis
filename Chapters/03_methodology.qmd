@@ -1,0 +1,280 @@
+# Methodology {#sec-methodology}
+
+This chapter demonstrates how to present your research methodology with proper figures, tables, equations, and algorithms.
+
+
+
+## Figures and Diagrams {#sec-figures-diagrams}
+
+### Flowcharts with Mermaid
+
+For process flows and workflows, use Mermaid diagrams:
+
+::: {#fig-workflow}
+```{mermaid}
+flowchart TD
+    A[Input Data] --> B[Preprocessing]
+    B --> C[Feature Extraction]
+    C --> D[Model Training]
+    D --> E[Validation]
+    E --> F{Acceptable?}
+    F -->|No| D
+    F -->|Yes| G[Deploy]
+```
+
+Methodology workflow.
+:::
+
+**Reference:** See @fig-workflow for the overall process.
+
+
+
+## Mathematical Formulation {#sec-math-formulation}
+
+### Problem Definition
+
+Let $\mathbf{X} = \{x_1, x_2, \ldots, x_n\}$ be the input dataset where $x_i \in \mathbb{R}^d$. The objective is to learn a function:
+
+$$
+f: \mathbb{R}^d \rightarrow \mathbb{C}
+$$ {#eq-objective}
+
+where $\mathbb{C} = \{c_1, c_2, \ldots, c_k\}$ is the set of $k$ classes.
+
+### Preprocessing
+
+**Normalization:** Each feature is normalized using z-score normalization:
+
+$$
+x'_i = \frac{x_i - \mu}{\sigma}
+$$ {#eq-normalization}
+
+where $\mu$ is the mean and $\sigma$ is the standard deviation.
+
+**Feature extraction:** Principal Component Analysis (PCA) transforms data:
+
+$$
+\mathbf{Y} = \mathbf{X} \mathbf{W}
+$$ {#eq-pca}
+
+where $\mathbf{W}$ is the matrix of eigenvectors.
+
+### Model Formulation
+
+The classification model is defined as:
+
+$$
+\hat{y} = \arg\max_{c \in \mathbb{C}} P(y = c | \mathbf{x}, \boldsymbol{\theta})
+$$ {#eq-classification}
+
+where $\boldsymbol{\theta}$ represents model parameters.
+
+**Loss function:**
+
+$$
+\mathcal{L}(\boldsymbol{\theta}) = -\frac{1}{N} \sum_{i=1}^{N} \sum_{c=1}^{k} y_{ic} \log(p_{ic})
+$$ {#eq-loss}
+
+where $y_{ic}$ is the ground truth and $p_{ic}$ is the predicted probability.
+
+### Optimization
+
+Parameters are optimized using gradient descent:
+
+$$
+\boldsymbol{\theta}_{t+1} = \boldsymbol{\theta}_t - \alpha \nabla_{\boldsymbol{\theta}} \mathcal{L}(\boldsymbol{\theta}_t)
+$$ {#eq-gradient-descent}
+
+where $\alpha$ is the learning rate.
+
+**Convergence criterion:**
+
+$$
+\|\nabla_{\boldsymbol{\theta}} \mathcal{L}(\boldsymbol{\theta})\| < \epsilon
+$$ {#eq-convergence}
+
+where $\epsilon = 10^{-6}$ is the tolerance threshold.
+
+
+
+## Algorithms {#sec-algorithms}
+
+Algorithms can be written using the pseudocode environment for professional formatting.
+
+### Training Algorithm
+
+```pseudocode
+#| label: alg-training
+\begin{algorithm}[H]
+\caption{Model Training Algorithm}
+\begin{algorithmic}[1]
+\Require Training data $X$, labels $y$, learning rate $\alpha$, epochs $E$
+\Ensure Trained model parameters $\theta$
+
+\State Initialize $\theta$ randomly
+\For{$epoch = 1$ to $E$}
+    \State Shuffle training data
+    \ForAll{batch $B$ in $X$}
+        \State Compute predictions: $\hat{y} = f(B; \theta)$
+        \State Compute loss: $L = \text{Loss}(\hat{y}, y)$
+        \State Compute gradients: $g = \nabla_{\theta} L$
+        \State Update parameters: $\theta \leftarrow \theta - \alpha \cdot g$
+    \EndFor
+    \State Validate on validation set
+    \If{validation\_loss $<$ best\_loss}
+        \State Save $\theta$ as best\_model
+    \EndIf
+\EndFor
+\State \Return best\_model
+\end{algorithmic}
+\end{algorithm}
+```
+
+### Prediction Algorithm
+
+```pseudocode
+#| label: alg-inference
+\begin{algorithm}[H]
+\caption{Inference Algorithm}
+\begin{algorithmic}[1]
+\Require Test sample $x$, trained model $\theta$
+\Ensure Predicted class $\hat{c}$ and confidence score
+
+\State Preprocess $x$ using normalization (Eq. @eq-normalization)
+\State Extract features: $x' = \text{FeatureExtract}(x)$
+\State Compute class probabilities:
+\ForAll{class $c$ in $C$}
+    \State $p_c = P(y = c | x'; \theta)$
+\EndFor
+\State Find predicted class: $\hat{c} = \arg\max(p_c)$
+\State Compute confidence: $\text{conf} = \max(p_c)$
+\State \Return $\hat{c}$, conf
+\end{algorithmic}
+\end{algorithm}
+```
+
+
+
+## Experimental Setup {#sec-experimental-setup}
+
+### Datasets
+
+| Dataset | Samples | Features | Classes | Split |
+|---------|---------|----------|---------|-------|
+| Dataset A | 10,000 | 128 | 10 | 70/15/15 |
+| Dataset B | 25,000 | 256 | 5 | 80/10/10 |
+| Dataset C | 50,000 | 512 | 20 | 75/12.5/12.5 |
+
+: Datasets used in experiments {#tbl-datasets}
+
+Split indicates train/validation/test percentages.
+
+### Hyperparameters
+
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| Learning rate (α) | 0.001 | Initial learning rate |
+| Batch size | 32 | Training batch size |
+| Epochs (E) | 100 | Maximum training epochs |
+| Dropout | 0.3 | Dropout probability |
+| Optimizer | Adam | Optimization algorithm |
+| Weight decay | 1e-4 | L2 regularization |
+
+: Hyperparameter configuration {#tbl-hyperparams}
+
+See @tbl-hyperparams for complete parameter settings.
+
+### Evaluation Metrics
+
+**Accuracy:**
+
+$$
+\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}
+$$ {#eq-accuracy}
+
+**Precision:**
+
+$$
+\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
+$$ {#eq-precision}
+
+**Recall:**
+
+$$
+\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+$$ {#eq-recall}
+
+**F1-Score:**
+
+$$
+\text{F1} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+$$ {#eq-f1}
+
+
+
+## Implementation Details {#sec-implementation}
+
+### Software and Libraries
+
+**Programming environment:**
+
+```python
+# Python version
+Python 3.10.12
+
+# Key libraries
+import numpy as np          # v1.24.3
+import pandas as pd         # v2.0.2
+import scikit-learn as sklearn  # v1.2.2
+import tensorflow as tf     # v2.13.0
+```
+
+**Hardware specifications:**
+
+| Component | Specification |
+|-----------|---------------|
+| CPU | Intel Core i7-12700K |
+| RAM | 32 GB DDR4 |
+| GPU | NVIDIA RTX 3090 (24GB) |
+| Storage | 1TB NVMe SSD |
+
+: Hardware configuration {#tbl-hardware}
+
+### Model Architecture
+
+**Network structure:**
+
+```python
+model = Sequential([
+    Dense(256, activation='relu', input_dim=128),
+    Dropout(0.3),
+    Dense(128, activation='relu'),
+    Dropout(0.3),
+    Dense(64, activation='relu'),
+    Dense(num_classes, activation='softmax')
+])
+```
+
+**Layer dimensions:**
+
+$$
+\begin{aligned}
+\text{Input} &: \mathbb{R}^{128} \\
+\text{Hidden}_1 &: \mathbb{R}^{256} \\
+\text{Hidden}_2 &: \mathbb{R}^{128} \\
+\text{Hidden}_3 &: \mathbb{R}^{64} \\
+\text{Output} &: \mathbb{R}^{k}
+\end{aligned}
+$$ {#eq-architecture}
+
+
+## Summary
+
+This chapter presented:
+
+1. System architecture and diagrams
+2. Mathematical formulation with equations
+3. Training and inference algorithms
+4. Experimental setup with datasets and hyperparameters
+
+Results and discussion are presented in @sec-results.

@@ -1,0 +1,206 @@
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+\thispagestyle{empty} % No header/footer
+\begin{center}
+% Add flexible spacing above
+\vfill
+
+% Thesis Title in uppercase
+{\fontsize{16pt}{20pt}\selectfont \bfseries \MakeUppercase{\ttitle}\par}\vspace{6mm}
+
+\textbf{PRE-THESIS SYNOPSIS}\\% Thesis type
+
+\vspace{3mm} 
+
+\textbf{\textit{submitted in partial fulfillment of the\\ requirements for the award of the degree}}
+
+\vspace{1mm} 
+
+\textit{of} \vspace{1mm} % "of" with balanced spacing
+
+\MakeUppercase{\textbf{\degreeName}} \vspace{1mm} % Degree name in uppercase
+
+\textit{in} \vspace{1mm} % "in" and Department name
+
+\MakeUppercase{\textbf{\Department}} \vspace{1mm}
+
+\textit{by} \vspace{1mm} % "by" and Author details
+
+$if(author.url)$
+\href{$author.url$}{\MakeUppercase{\textbf{\authorName}}} \\[1mm] % Author with link
+$else$
+\MakeUppercase{\textbf{\authorName}} \\[1mm] % Author without link
+$endif$
+
+\textbf{(Sch. No.: \scholarID)}
+
+\textbf{Under the Supervision}
+
+\textit{of} \vspace{2mm}
+
+\textbf{\supervisorName} \& \textbf{\cosupervisorName}
+
+
+\vfill
+
+% Logo
+$if(thesis.logo)$
+$if(thesis.logo-height)$
+\includegraphics[height=$thesis.logo-height$]{$thesis.logo$}
+$else$
+\includegraphics{$thesis.logo$}
+$endif$
+$endif$
+
+\vfill
+
+{\fontsize{14pt}{16pt}\selectfont\scshape % University details in uppercase
+\MakeUppercase{\textbf{\universityLineOne}} \\ 
+\MakeUppercase{\textbf{\universityLineTwo}} \\ 
+\MakeUppercase{\textbf{\universityLocation}}\par} 
+\vspace{2mm}
+
+$if(book.date)$
+{\fontsize{14pt}{16pt}\selectfont \MakeUppercase{\textbf{$book.date$}}} % Date
+$endif$
+
+\vspace{3mm}
+{\small\textbf{Proud to be part of An Institute of National Importance}}
+\end{center}
+\end{titlepage}
+
+% \cleardoublepage % Ensures next section starts on the right side
+% 
+% %----------------------------------------------------------------------------------------
+% %	COPYRIGHT PAGE
+% %----------------------------------------------------------------------------------------
+% \newpairofpagestyles{copyrightpage}{% Define a new page style
+%     \clearpairofpagestyles % Clear default header/footer
+%     \cfoot{\textbf{Proud to be part of An Institute of National Importance}} % Centered in footer
+%     \ofoot{\pagemark} % Page number at the bottom-right
+% }
+% 
+% \begin{center}
+%     \vspace*{0.3\textheight}
+%     \textcopyright\ {\MakeUppercase{\textbf{\universityLineOne}} \MakeUppercase{\textbf{\universityLineTwo}} \\ 
+%     \MakeUppercase{\textbf{\universityLocation}}\par} 
+%     \textbf{ALL RIGHTS RESERVED}
+%     \vfill % Pushes the next text to the bottom
+%     \textbf{Proud to be part of An Institute of National Importance}
+% \end{center}
+
+\cleardoublepage
+% 
+% %----------------------------------------------------------------------------------------
+% %	DECLARATION PAGE
+% %----------------------------------------------------------------------------------------
+% 
+% \addchaptertocentry{\authorshipname} 
+% $if(thesis.declaration)$
+% \input{"$thesis.declaration$"}
+% \vfill % Pushes the next text to the bottom
+% \begin{center}
+% \textbf{Proud to be part of An Institute of National Importance}
+% \end{center}
+% \cleardoublepage
+% $endif$
+
+% $if(thesis.quotation)$
+% %----------------------------------------------------------------------------------------
+% %	QUOTATION PAGE
+% %----------------------------------------------------------------------------------------
+% 
+% \vspace*{0.2\textheight}
+% $if(thesis.quotation.text)$
+% \noindent``{\itshape $thesis.quotation.text$}''\bigbreak
+% \hfill $thesis.quotation.attribution$
+% $else$
+% \input{``$thesis.quotation$''}
+% $endif$
+% 
+% \cleardoublepage
+% $endif$
+
+
+$if(thesis.abstract)$
+%----------------------------------------------------------------------------------------
+%	ABSTRACT PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{abstract}
+\addchaptertocentry{\abstractname}
+$if(thesis.abstract.text)$
+$thesis.abstract.text$
+$else$
+\input{"$thesis.abstract$"}
+$endif$
+\end{abstract}
+
+\cleardoublepage
+$endif$
+
+% $if(thesis.acknowledgements)$
+% %----------------------------------------------------------------------------------------
+% %	ACKNOWLEDGEMENTS
+% %----------------------------------------------------------------------------------------
+% 
+% \begin{acknowledgements}
+% \addchaptertocentry{\acknowledgementname} 
+% $if(thesis.acknowledgements.text)$
+% $thesis.acknowledgements.text$
+% $else$
+% \input{"$thesis.acknowledgements$"}
+% $endif$
+% \end{acknowledgements}
+% 
+% \cleardoublepage
+% $endif$
+
+%----------------------------------------------------------------------------------------
+%	CONTENTS, FIGURES, AND TABLES
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\hypersetup{linkcolor=$if(toclinkcolor)$$toclinkcolor$$else$black$endif$}
+
+\tableofcontents
+% \listoffigures
+% \listoftables
+
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	ABBREVIATIONS, SYMBOLS, AND DEDICATION SECTIONS
+%----------------------------------------------------------------------------------------
+
+% $if(thesis.abbreviations)$
+% \input{"$thesis.abbreviations$"}
+% $endif$
+% 
+% $if(thesis.constants)$
+% \input{"$thesis.constants$"}
+% $endif$
+% 
+% $if(thesis.symbols)$
+% \input{"$thesis.symbols$"}
+% $endif$
+% 
+% $if(thesis.dedication)$
+% \dedicatory{\input{"$thesis.dedication$"}} 
+% $endif$
+
+\cleardoublepage % Ensures Chapter 1 starts on the right page in two-sided layout
+
+%----------------------------------------------------------------------------------------
+%	MAIN THESIS CONTENT
+%----------------------------------------------------------------------------------------
+
+\mainmatter
+\pagestyle{plain}  

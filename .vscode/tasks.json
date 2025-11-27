@@ -1,0 +1,127 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Quarto Render",
+            "type": "shell",
+            "command": "quarto",
+            "args": [
+                "render"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Quarto Preview",
+            "type": "shell",
+            "command": "quarto",
+            "args": [
+                "preview"
+            ],
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Render Synopsis PDF",
+            "type": "shell",
+            "command": "quarto",
+            "args": [
+                "render",
+                "--to",
+                "manit-synopsis-pdf"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Quarto Render HTML",
+            "type": "shell",
+            "command": "quarto",
+            "args": [
+                "render",
+                "--to",
+                "html"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Quarto Render DOCX",
+            "type": "shell",
+            "command": "quarto",
+            "args": [
+                "render",
+                "--to",
+                "docx"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Open PDF Output",
+            "type": "shell",
+            "command": "Start-Process",
+            "args": [
+                "draft\\PreThesisSynopsis.pdf"
+            ],
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "start",
+                    "draft\\PreThesisSynopsis.pdf"
+                ]
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean Build Files",
+            "type": "shell",
+            "command": "Remove-Item",
+            "args": [
+                "-Path",
+                "draft",
+                "-Recurse",
+                "-Force",
+                "-ErrorAction",
+                "SilentlyContinue"
+            ],
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    "if exist draft rmdir /s /q draft"
+                ]
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

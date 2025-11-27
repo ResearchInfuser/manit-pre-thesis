@@ -1,0 +1,50 @@
+# Ignore hidden folders (starting with dot)
+.Rproj.user/
+.Rhistory
+.quarto/
+
+# R specific
+*.Rproj
+*.Rhistory
+.RData
+.Ruserdata
+
+# LaTeX auxiliary and output files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.run.xml
+*.nav
+*.snm
+*.vrb
+
+# Quarto build artifacts
+_quarto/
+*.html
+*.pdf
+*.docx
+*.epub
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Optional: drafts and temporary work
+draft/
+
+# Compiled output (optional, keep if you want PDF output in repo)
+hardbound-cover.pdf
+
+/.quarto/
+
+/.luarc.json
+
+**/*.quarto_ipynb

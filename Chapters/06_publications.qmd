@@ -1,0 +1,70 @@
+# Publications {#sec-publications}
+
+List publications arising from this research work.
+
+
+
+## Journal Articles {#sec-journals}
+
+### Published
+
+1. **Author1, A., Author2, B., and Author3, C.** (2024). "Complete Article Title." *Journal Name*, vol. 10, no. 2, pp. 123-145. DOI: [10.1234/journal.2024.001](https://doi.org/10.1234/journal.2024.001)
+
+2. **Author1, A. and Author2, B.** (2023). "Second Article Title." *Another Journal*, vol. 8, no. 4, pp. 567-589. DOI: [10.5678/journal.2023.045](https://doi.org/10.5678/journal.2023.045)
+
+### Under Review
+
+3. **Author1, A., Author3, C., and Author4, D.** "Title of Submitted Paper." *Target Journal*, submitted October 2024.
+
+
+
+## Conference Papers {#sec-conferences}
+
+### Published
+
+1. **Author1, A. and Author2, B.** (2024). "Conference Paper Title." In *Proceedings of the International Conference on Topic*, pp. 100-110, City, Country. DOI: [10.1109/CONF.2024.123456](https://doi.org/10.1109/CONF.2024.123456)
+
+2. **Author1, A., Author3, C., and Author5, E.** (2023). "Another Conference Paper." In *IEEE Conference on Related Topic*, pp. 45-58, City, Country.
+
+### Accepted
+
+3. **Author1, A. and Author2, B.** "Upcoming Conference Paper." In *International Conference Name*, to appear, 2025.
+
+
+
+## Book Chapters {#sec-chapters}
+
+1. **Author1, A. and Author2, B.** (2024). "Chapter Title." In *Book Title*, Editor, Ed. Publisher, pp. 78-102. ISBN: 978-0-123456-78-9
+
+
+
+## Preprints and Technical Reports {#sec-preprints}
+
+1. **Author1, A., Author2, B., and Author3, C.** "Preprint Title." arXiv:2024.12345, 2024. Available: [https://arxiv.org/abs/2024.12345](https://arxiv.org/abs/2024.12345)
+
+
+
+## Patents {#sec-patents}
+
+1. **Author1, A. and Author2, B.** "Patent Title." Patent No. US1234567B2, filed Jan 2023, granted Dec 2024.
+
+
+
+## Publication Metrics {#sec-metrics}
+
+| Type | Count |
+|------|-------|
+| Journal Articles | 2 |
+| Conference Papers | 2 |
+| Under Review | 1 |
+| Citations (Total) | 45 |
+| h-index | 3 |
+
+: Publication summary {#tbl-pub-metrics}
+
+
+
+## Awards and Recognition {#sec-awards}
+
+- **Best Paper Award:** Conference Name, 2024
+- **Outstanding Reviewer:** Journal Name, 2023
