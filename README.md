@@ -2,6 +2,10 @@
 
 Quarto-based template for Synopsis submissions at Maulana Azad National Institute of Technology, Bhopal.
 
+## Preview
+
+📄 **[View Sample PDF](draft/PreThesisSynopsis.pdf)** - See the generated output with tutorial content
+
 ## Prerequisites
 
 - [Quarto](https://quarto.org/docs/get-started/) (latest version)

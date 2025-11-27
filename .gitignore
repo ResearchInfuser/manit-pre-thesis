@@ -29,16 +29,16 @@
 # Quarto build artifacts
 _quarto/
 *.html
-*.pdf
 *.docx
 *.epub
+
+# LaTeX generated PDFs (but allow sample output)
+*.pdf
+!draft/PreThesisSynopsis.pdf
 
 # System files
 .DS_Store
 Thumbs.db
-
-# Optional: drafts and temporary work
-draft/
 
 # Compiled output (optional, keep if you want PDF output in repo)
 hardbound-cover.pdf
