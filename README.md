@@ -6,6 +6,8 @@ Quarto-based template for Synopsis submissions at Maulana Azad National Institut
 
 📄 **[View Sample PDF](draft/PreThesisSynopsis.pdf)** - See the generated output with tutorial content
 
+![Pre Thesis Synopsis](manit-pre-thesis.jpg)
+
 ## Prerequisites
 
 - [Quarto](https://quarto.org/docs/get-started/) (latest version)
