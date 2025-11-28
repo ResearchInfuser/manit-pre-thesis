@@ -302,7 +302,8 @@ If you use this template, please cite it as:
 @software{manit_pre_thesis_template,
   title={MANIT Pre-Thesis Synopsis Quarto Template},
   author={Prashant Kumar Nag},
-  year={2024},
+  organization={ResearchInfuser},
+  year={2025},
   url={https://github.com/ResearchInfuser/manit-pre-thesis}
 }
 ```
